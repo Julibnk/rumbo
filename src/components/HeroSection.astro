@@ -81,12 +81,24 @@ const {
       </div>
     </header>
   ) : (
-    <header class="relative min-h-[600px] lg:min-h-[500px] flex items-center -mt-20 overflow-hidden">
-      <div class="w-full grid grid-cols-1 lg:grid-cols-2 relative">
-        {/* Left: Text content on dark background */}
-        <div class="bg-forest-dark py-24 lg:py-32 px-6 sm:px-12 lg:px-16 flex items-center relative z-10">
+    <header class="relative min-h-[600px] lg:min-h-[70vh] -mt-20 overflow-hidden">
+      {/* Background image - full coverage */}
+      <div class="absolute inset-0 z-0">
+        <img
+          alt={imageAlt}
+          class="w-full h-full object-cover brightness-90"
+          src={image}
+        />
+      </div>
+
+      {/* Diagonal overlay with text */}
+      <div class="absolute inset-0 z-10 pt-20">
+        <div
+          class="bg-forest-dark/75 backdrop-blur-md h-full flex items-center px-6 sm:px-12 lg:px-16 pb-16"
+          style="clip-path: polygon(0 0, 60% 0, 50% 100%, 0% 100%);"
+        >
           <div class="w-full max-w-xl">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4 uppercase">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4 uppercase drop-shadow-xl">
               <Fragment set:html={title} />
               {titleAccent && (
                 <>
@@ -95,19 +107,18 @@ const {
                 </>
               )}
             </h1>
-            <p class="text-lg sm:text-xl text-gray-300 leading-relaxed font-light">
+            <p class="text-lg sm:text-xl text-gray-200 leading-relaxed font-light drop-shadow-lg mb-8">
               {subtitle}
             </p>
+            <a
+              href={ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block bg-primary hover:bg-white text-black font-bold text-lg px-8 py-4 rounded-xl shadow-brutal hover:shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all border-2 border-black uppercase tracking-wider"
+            >
+              {ctaText}
+            </a>
           </div>
-        </div>
-
-        {/* Right: Image with clip-path */}
-        <div class="relative h-64 lg:h-auto" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%);">
-          <img
-            alt={imageAlt}
-            class="absolute inset-0 w-full h-full object-cover"
-            src={image}
-          />
         </div>
       </div>
     </header>
