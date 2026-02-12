@@ -6,7 +6,15 @@ Rediseno y reconstruccion de la web de Rumbo Norte Asturias (https://rumbonortea
 
 ## Contenido de referencia
 
-El fichero `rumbonorteasturias-contenido.md` contiene el scraping completo del sitio actual (WordPress + Elementor) con todo el contenido, tarifas, estructura y textos de las 11 paginas.
+**IMPORTANTE**: El fichero `design/contenido.md` es la fuente de verdad para todo el contenido textual de la web (descripciones, tarifas, horarios, FAQ, etc.).
+
+**Reglas de uso del contenido:**
+- **SIEMPRE** usar el contenido de `design/contenido.md` para rellenar textos, a menos que se especifique explicitamente un texto concreto diferente
+- **NUNCA** usar los textos que aparezcan en capturas de pantalla (screenshots) o ejemplos HTML de `design/` - estos son solo para referencia visual/de diseño
+- Si una instruccion pide cambiar explicitamente el contenido, entonces se puede modificar
+- Mantener todos los textos en **castellano** salvo indicacion contraria
+
+El fichero contiene el scraping completo del sitio actual (WordPress + Elementor) con las 11 paginas: descripciones de actividades, tarifas completas, horarios, FAQ, material incluido, proceso paso a paso, y datos de empresa.
 
 ## Stack tecnologico
 
