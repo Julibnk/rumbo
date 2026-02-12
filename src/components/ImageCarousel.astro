@@ -1,0 +1,236 @@
+---
+interface CarouselImage {
+  src: string;
+  alt: string;
+  location?: string;
+  caption?: string;
+}
+
+interface Props {
+  title?: string;
+  titleAccent?: string;
+  images: CarouselImage[];
+}
+
+const { title = "LA", titleAccent = "GALERIA", images } = Astro.props;
+---
+
+<section class="py-24 bg-background-light overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Title -->
+    <div class="mb-16">
+      <h2 class="text-5xl md:text-7xl font-bold uppercase tracking-tight">
+        {title} <span class="text-stroke-sm">{titleAccent}</span>
+      </h2>
+    </div>
+
+    <!-- Carousel -->
+    <div class="relative" id="carousel-wrapper">
+      <!-- Slides container -->
+      <div class="flex items-center justify-center relative h-[350px] md:h-[480px]">
+        {images.map((img, i) => (
+          <div
+            class:list={[
+              "carousel-slide absolute transition-all duration-700 ease-in-out rounded-2xl overflow-hidden shadow-2xl",
+              i === 0 ? "carousel-active" : "",
+            ]}
+            data-slide={i}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="w-full h-full object-cover"
+              draggable="false"
+            />
+            <!-- Caption overlay -->
+            {(img.location || img.caption) && (
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 md:p-8 caption-overlay">
+                {img.location && (
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="material-icons text-primary text-sm">location_on</span>
+                    <span class="text-primary text-xs font-bold uppercase tracking-widest">{img.location}</span>
+                  </div>
+                )}
+                {img.caption && (
+                  <p class="text-white text-lg md:text-xl font-bold uppercase tracking-tight leading-tight max-w-md">{img.caption}</p>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- Navigation arrows -->
+      <button
+        id="carousel-prev"
+        class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg border border-gray-200 hover:-translate-y-1/2 hover:scale-110 transition-all group"
+        aria-label="Anterior"
+      >
+        <span class="material-icons text-gray-800 group-hover:text-primary transition-colors">chevron_left</span>
+      </button>
+      <button
+        id="carousel-next"
+        class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg border border-gray-200 hover:-translate-y-1/2 hover:scale-110 transition-all group"
+        aria-label="Siguiente"
+      >
+        <span class="material-icons text-gray-800 group-hover:text-primary transition-colors">chevron_right</span>
+      </button>
+    </div>
+
+    <!-- Dot indicators -->
+    <div class="flex items-center justify-center gap-2 mt-8" id="carousel-dots">
+      {images.map((_, i) => (
+        <button
+          class:list={[
+            "carousel-dot w-3 h-3 rounded-full transition-all duration-300",
+            i === 0 ? "bg-primary scale-125" : "bg-gray-300 hover:bg-gray-400",
+          ]}
+          data-dot={i}
+          aria-label={`Ir a imagen ${i + 1}`}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .carousel-slide {
+    width: 55%;
+    height: 75%;
+    opacity: 0;
+    transform: scale(0.7) rotate(0deg);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .carousel-slide.carousel-active {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    pointer-events: auto;
+    z-index: 10;
+    width: 70%;
+    height: 100%;
+  }
+
+  .carousel-slide.carousel-prev {
+    opacity: 0.7;
+    transform: translateX(-75%) scale(0.78) rotate(-3deg);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .carousel-slide.carousel-next {
+    opacity: 0.7;
+    transform: translateX(75%) scale(0.78) rotate(3deg);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .carousel-slide .caption-overlay {
+    opacity: 0;
+    transition: opacity 0.5s ease 0.3s;
+  }
+
+  .carousel-slide.carousel-active .caption-overlay {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-slide.carousel-active {
+      width: 85%;
+      height: 100%;
+    }
+
+    .carousel-slide.carousel-prev {
+      transform: translateX(-65%) scale(0.72) rotate(-3deg);
+    }
+
+    .carousel-slide.carousel-next {
+      transform: translateX(65%) scale(0.72) rotate(3deg);
+    }
+
+    .carousel-slide {
+      width: 65%;
+      height: 70%;
+    }
+  }
+</style>
+
+<script>
+  const slides = document.querySelectorAll<HTMLElement>(".carousel-slide");
+  const dots = document.querySelectorAll<HTMLElement>(".carousel-dot");
+  const prevBtn = document.getElementById("carousel-prev");
+  const nextBtn = document.getElementById("carousel-next");
+
+  let current = 0;
+  const total = slides.length;
+
+  function updateCarousel() {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("carousel-active", "carousel-prev", "carousel-next");
+
+      if (i === current) {
+        slide.classList.add("carousel-active");
+      } else if (i === (current - 1 + total) % total) {
+        slide.classList.add("carousel-prev");
+      } else if (i === (current + 1) % total) {
+        slide.classList.add("carousel-next");
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      if (i === current) {
+        dot.classList.add("bg-primary", "scale-125");
+        dot.classList.remove("bg-gray-300");
+      } else {
+        dot.classList.remove("bg-primary", "scale-125");
+        dot.classList.add("bg-gray-300");
+      }
+    });
+  }
+
+  function goTo(index: number) {
+    current = (index + total) % total;
+    updateCarousel();
+  }
+
+  prevBtn?.addEventListener("click", () => goTo(current - 1));
+  nextBtn?.addEventListener("click", () => goTo(current + 1));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => goTo(i));
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    const wrapper = document.getElementById("carousel-wrapper");
+    if (!wrapper) return;
+    const rect = wrapper.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!isVisible) return;
+
+    if (e.key === "ArrowLeft") goTo(current - 1);
+    if (e.key === "ArrowRight") goTo(current + 1);
+  });
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const wrapper = document.getElementById("carousel-wrapper");
+
+  wrapper?.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  wrapper?.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goTo(current + 1);
+      else goTo(current - 1);
+    }
+  }, { passive: true });
+
+  // Initialize
+  updateCarousel();
+</script>
