@@ -1,0 +1,211 @@
+---
+const navLinks = [
+  { label: "Descenso del Sella", href: "/descenso-del-sella" },
+  { label: "Lagos de Covadonga", href: "/visita-lagos" },
+  { label: "Barranquismo", href: "/barranquismo" },
+  { label: "Packs", href: "/packs" },
+];
+
+const groupLinks = [
+  { label: "Descenso en Grupo", href: "/descenso-en-grupo" },
+  { label: "Viajes de Estudios", href: "/viajes-de-estudios" },
+];
+
+const aboutLinks = [
+  { label: "Contacto", href: "/contacto" },
+  { label: "Novedades", href: "/novedades" },
+];
+
+const bookingUrl = "https://www.reservaonline.support/rumbonorte/index.html";
+---
+
+<nav
+  class="fixed top-0 w-full z-50 bg-background-light/90 backdrop-blur-md border-b border-primary/20"
+  id="main-nav"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2 group">
+        <div
+          class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center transform -rotate-6 shadow-lg border-2 border-black group-hover:rotate-0 transition-transform"
+        >
+          <span class="material-icons text-black font-bold">terrain</span>
+        </div>
+        <span class="text-2xl font-bold tracking-tighter uppercase">
+          Rumbo<span class="text-primary">Norte</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden lg:flex items-center space-x-6">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+
+        <!-- Dropdown: Grupos -->
+        <div class="relative group/dropdown">
+          <button
+            class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1"
+          >
+            Grupos
+            <span class="material-icons text-sm transition-transform group-hover/dropdown:rotate-180"
+              >expand_more</span
+            >
+          </button>
+          <div
+            class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-200"
+          >
+            <div
+              class="bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-[200px]"
+            >
+              {
+                groupLinks.map((link) => (
+                  <a
+                    href={link.href}
+                    class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Dropdown: Nosotros -->
+        <div class="relative group/dropdown2">
+          <button
+            class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-1"
+          >
+            Nosotros
+            <span class="material-icons text-sm transition-transform group-hover/dropdown2:rotate-180"
+              >expand_more</span
+            >
+          </button>
+          <div
+            class="absolute top-full right-0 pt-2 opacity-0 invisible group-hover/dropdown2:opacity-100 group-hover/dropdown2:visible transition-all duration-200"
+          >
+            <div
+              class="bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-[180px]"
+            >
+              {
+                aboutLinks.map((link) => (
+                  <a
+                    href={link.href}
+                    class="block px-4 py-2 text-sm font-medium hover:bg-primary/10 hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <a
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-black text-white px-6 py-2 rounded-full font-bold uppercase text-sm hover:bg-primary hover:text-black transition-all transform hover:-translate-y-0.5 shadow-lg border-2 border-black"
+        >
+          Reserva ya!
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        class="lg:hidden text-gray-900 hover:text-primary"
+        id="mobile-menu-btn"
+        aria-label="Abrir menu"
+      >
+        <span class="material-icons text-3xl" id="menu-icon">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    class="lg:hidden hidden bg-background-light border-t border-primary/20"
+    id="mobile-menu"
+  >
+    <div class="px-4 py-6 space-y-1">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block py-3 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors border-b border-gray-100"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+
+      <div class="pt-2 pb-1">
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest"
+          >Grupos</span
+        >
+      </div>
+      {
+        groupLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block py-3 pl-4 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors border-b border-gray-100"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+
+      <div class="pt-2 pb-1">
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest"
+          >Nosotros</span
+        >
+      </div>
+      {
+        aboutLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block py-3 pl-4 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors border-b border-gray-100"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+
+      <div class="pt-4">
+        <a
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block w-full text-center bg-primary text-black px-6 py-3 rounded-xl font-bold uppercase text-sm shadow-brutal border-2 border-black"
+        >
+          Reserva ya!
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer for fixed nav -->
+<div class="h-20"></div>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const icon = document.getElementById("menu-icon");
+
+  btn?.addEventListener("click", () => {
+    const isOpen = !menu?.classList.contains("hidden");
+    menu?.classList.toggle("hidden");
+    if (icon) icon.textContent = isOpen ? "menu" : "close";
+  });
+</script>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wild &amp; Bold - Active Tourism Asturias</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#8cb950",
+              "background-light": "#f6f8f6",
+              "background-dark": "#225133",
+              "forest-dark": "#225133",
+              "stone-gray": "#e8ebe8",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            backgroundImage: {
+                'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+            }
+          },
+        },
+      }
+    </script>
+<style type="text/tailwindcss">.clip-slant-bottom {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        .clip-slant-top {
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
+        .text-stroke-sm {
+            -webkit-text-stroke: 1px black;
+            color: transparent;
+        }
+        .dark .text-stroke-sm {
+            -webkit-text-stroke: 1px white;
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .rotate-card:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 20;
+        }.fab-shadow {
+            box-shadow: 0 10px 20px rgba(140, 185, 80, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 font-display selection:bg-primary selection:text-black overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center space-x-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center transform -rotate-6 shadow-lg border-2 border-black dark:border-white">
+<span class="material-icons text-black font-bold">terrain</span>
+</div>
+<span class="text-2xl font-bold tracking-tighter uppercase dark:text-white">Wild<span class="text-primary">&amp;</span>Bold</span>
+</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Adventures</a>
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Locations</a>
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Stories</a>
+<button class="bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-full font-bold uppercase text-sm hover:bg-primary hover:text-black transition-all transform hover:-translate-y-1 shadow-lg">
+                    Plan Trip
+                </button>
+</div>
+<div class="md:hidden">
+<button class="text-gray-900 dark:text-white hover:text-primary">
+<span class="material-icons text-3xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<header class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden clip-slant-bottom">
+<div class="absolute inset-0 z-0">
+<img alt="Kayaking down a rushing river surrounded by lush green mountains" class="w-full h-full object-cover filter brightness-[0.7] contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHo8H1YDDwVY_nHJkFtZ53bFQQpLxkrW92Y2pGZUpGCnffoA9yJSLdHeZmwzdciywYZ-dnUaZuxzLGj6V_Eifq1oIEvEX4oaGTY4Z93IsOeDhETmFupB03ptakbfIcOWN7A3zujNp2lDN3c58WABsY0H-FcyhZMhh_snIIfBLS3Kmnk7JYEg7ZXIzJnCxmnMs8GssiiosuGOYv5rZXvUrwa4XNndWz6RfNCQU6iWBRK2hFWN-MLFYuSEJpzvzCdPPLAT2suj8f-g"/>
+</div>
+<div class="absolute inset-0 z-10 bg-forest-dark/40 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
+<div class="relative z-20 container mx-auto px-4 text-center">
+<div class="inline-block mb-4 px-4 py-1 bg-primary text-black font-bold text-xs uppercase tracking-[0.2em] rounded-full rotate-2 transform border-2 border-black">
+            Asturias, Spain
+        </div>
+<h1 class="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-none tracking-tighter mb-6 drop-shadow-2xl">
+            CONQUER <br/>
+<span class="text-primary italic relative inline-block">
+                THE SELLA
+                <svg class="absolute w-full h-3 -bottom-1 left-0 text-white opacity-80" fill="none" viewBox="0 0 200 9" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99999C18.4924 3.00001 77.5002 -3.49997 198 2.50001" stroke="currentColor" stroke-linecap="round" stroke-width="3"></path></svg>
+</span>
+</h1>
+<p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto mb-10 font-medium">
+            Paddle through the heart of the Picos de Europa. No filters, just raw nature.
+        </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-primary hover:bg-white text-black font-bold text-lg px-8 py-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all border-2 border-black uppercase tracking-wide">
+                Start Adventure
+            </button>
+<button class="bg-black/50 backdrop-blur-sm border-2 border-white hover:bg-white hover:text-black text-white font-bold text-lg px-8 py-4 rounded-xl transition-all uppercase tracking-wide">
+                Watch Film
+            </button>
+</div>
+</div>
+<div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+<span class="material-icons text-primary text-4xl">keyboard_double_arrow_down</span>
+</div>
+</header>
+<section class="py-20 bg-background-light dark:bg-background-dark relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="relative group">
+<div class="absolute inset-0 bg-primary rounded-xl transform rotate-3 translate-x-2 translate-y-2 group-hover:rotate-6 transition-transform duration-300"></div>
+<div class="relative rounded-xl overflow-hidden border-4 border-white dark:border-forest-dark shadow-2xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
+<img alt="Hiker looking at mountain range in Asturias" class="w-full h-[500px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhNkCzdhqMxe__0v7LXIkR2_q_tId_TEJG-6JVYJPr3kbNQL7TxHiHS6eUWHv7J2po_m96Shs2HGloR9KdykXjCCiHg-OMn9-VaTdXVaeob-0_1bRzug8_IoRVg1UTnTTsulUGd4GDJVd6tmoSWbo10Vxej1mSlA1p3S4uLZuS4RSaehV6VEXHpb28TN8GMfCCWRQ9_JORgAaKP2_vrpceX3AiqgnMSD7Ff7NqGOsjx6NqBzpcb-0vsOrhqQt_9b79fLabGXAJeQ"/>
+<div class="absolute bottom-4 left-4 bg-white/90 dark:bg-black/90 px-4 py-2 rounded-lg backdrop-blur-sm">
+<span class="text-xs font-bold uppercase tracking-widest flex items-center gap-1">
+<span class="material-icons text-primary text-sm">location_on</span>
+                            Picos de Europa
+                        </span>
+</div>
+</div>
+</div>
+<div class="space-y-6 relative">
+<span class="text-primary font-bold tracking-widest uppercase text-sm">Our Philosophy</span>
+<h2 class="text-5xl md:text-6xl font-bold leading-tight dark:text-white">
+                    WILD IS NOT <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#225133]">JUST A PLACE.</span>
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-300 font-light leading-relaxed">
+                    We don't do tourist traps. We do mud, sweat, and adrenaline. From the roaring rapids of the Sella to the silent depths of limestone canyons, we guide you where the maps end and the stories begin.
+                </p>
+<ul class="space-y-4 pt-4">
+<li class="flex items-center space-x-3">
+<span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-icons text-sm">bolt</span>
+</span>
+<span class="font-medium text-lg">High-Intensity Experiences</span>
+</li>
+<li class="flex items-center space-x-3">
+<span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-icons text-sm">groups</span>
+</span>
+<span class="font-medium text-lg">Small, Intimate Groups</span>
+</li>
+<li class="flex items-center space-x-3">
+<span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-icons text-sm">eco</span>
+</span>
+<span class="font-medium text-lg">Eco-Conscious Exploration</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-stone-gray dark:bg-[#1a3a25] clip-slant-top clip-slant-bottom relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-5xl md:text-7xl font-bold mb-4 dark:text-white">CHOOSE YOUR <span class="text-stroke-sm text-white dark:text-black">CHAOS</span></h2>
+<div class="w-24 h-2 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-min">
+<div class="md:col-span-7 relative group transform transition-all duration-500 hover:z-30">
+<div class="relative bg-white dark:bg-background-dark p-2 pb-12 rounded-xl shadow-xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-gray-200 dark:border-gray-800">
+<div class="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg relative">
+<img alt="People canyoning in a narrow gorge with water" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_J2iy_sRCFXDohXu3MQRWvra8mXXQmCz4PcFCAA3jHJAjPEl2tgo9v9qPAZGzX0qwnOhhIH2xPpSwK0rJbgeJQcRF9D7qkXRaNvyfw09H3sF1F4XzXgr9B4HCd3z1ws2Fz2wJq4IILC9m3MRVqat6tBlBjdNAvQxbvclaZIdCMmPtUwKwLJyinFQS8ndgUFf-FeeO78ab7OiYITmcuWYlrOjC5rizGKie-eKao0gvgx69-r9GKBuXTz5oMM8n_FxMnut1ULC_xg"/>
+<div class="absolute top-4 right-4 bg-primary text-black font-bold px-3 py-1 rounded-md text-sm shadow-md">
+                            HARDCORE
+                        </div>
+</div>
+<div class="absolute -bottom-6 right-6 bg-primary w-16 h-16 rounded-full flex items-center justify-center border-4 border-white dark:border-background-dark shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-icons text-black text-3xl">arrow_forward</span>
+</div>
+<div class="mt-4 px-4">
+<h3 class="text-3xl font-bold mb-2 uppercase group-hover:text-primary transition-colors">Canyoning</h3>
+<p class="text-gray-500 dark:text-gray-400">Descend into the abyss. Rappel, jump, and swim through crystal clear waters.</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 relative group mt-8 md:-mt-12 md:ml-[-2rem] z-10 hover:z-30">
+<div class="relative bg-white dark:bg-background-dark p-2 pb-8 rounded-xl shadow-2xl transform rotate-2 group-hover:rotate-0 transition-transform duration-300 border border-gray-200 dark:border-gray-800">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-8 bg-primary/40 backdrop-blur-sm transform -rotate-1 z-20"></div>
+<div class="aspect-w-3 aspect-h-4 overflow-hidden rounded-lg">
+<img alt="Kayaks lined up by the Sella river" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAClcePJ7LUbyYwnh79wQpKJiSaM13yf79Tn7afyqo8f4X-n7p5hT1c0HmWbdoVts18Yw6VSEhY1N-0OdFGM8wiHvjjdXdDP4GVVCl5moycJFPUJ8zhfRzW5bN8p-99Szhv8ZNoedAibSYPowsLAhJ4Jp0f9WD-gPsqwYLeDQSXVhFU1-LVKyoZG9AjG6JInwtFLoS-q3Qvq-KOdC5ina6Me6Qf_CGk0eko-CGwyj5h2fj2GngMim1wwEn5KRRFinuHB3xUh7UpFg"/>
+</div>
+<div class="mt-4 px-4 text-center">
+<h3 class="text-3xl font-bold mb-2 uppercase group-hover:text-primary transition-colors">Sella Descent</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm">The classic. 15km of pure river magic.</p>
+<span class="inline-block mt-3 px-3 py-1 bg-black text-white dark:bg-white dark:text-black text-xs font-bold uppercase rounded-full">Best Seller</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-8 md:col-start-3 relative group mt-8 hover:z-30">
+<div class="relative bg-white dark:bg-background-dark p-2 rounded-xl shadow-xl transform rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-gray-200 dark:border-gray-800 flex flex-col md:flex-row items-center">
+<div class="w-full md:w-1/2 overflow-hidden rounded-lg">
+<img alt="Covadonga Lakes reflection with mountains" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_v6DENTQ1FTwT_nQnn9Mg4xu_eoyZt3-RSewYEFcJ3IR-S7RgajSc0X-p0SoGZktkRtgUqXVdg5Aefrraf8soxMATQd0W6Tsona_cAOVPVutx2Y8_U947RNavkCm2PI25eGy6GQmvNephlNuPvUZ3axMUfzEgCRaa0Fg5kfyVHWul_mpwj2PznmamTBzvHpQNsu6udqDiY8jS8w-7c_HTMFbpBjilzv7HaGYU6XAbxfopj0JHv14A33gHas90O2NE8XL-52drCw"/>
+</div>
+<div class="p-6 md:w-1/2">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-icons text-primary">star</span>
+<span class="text-sm font-bold text-gray-400 uppercase">Must See</span>
+</div>
+<h3 class="text-3xl font-bold mb-3 uppercase group-hover:text-primary transition-colors">Covadonga Lakes</h3>
+<p class="text-gray-500 dark:text-gray-400 mb-6">High altitude glacial lakes. A hike that will take your breath away literally and figuratively.</p>
+<a class="text-primary font-bold uppercase tracking-widest text-sm hover:underline decoration-2 underline-offset-4" href="#">Explore Details -&gt;</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 overflow-hidden bg-background-light dark:bg-background-dark">
+<div class="container mx-auto px-4 mb-10 flex justify-between items-end">
+<div>
+<h2 class="text-4xl font-bold uppercase dark:text-white">Survivors &amp; Thrivers</h2>
+<p class="text-gray-500 mt-2">Real stories from the wild.</p>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-black transition-colors dark:text-white">
+<span class="material-icons">west</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-black transition-colors dark:text-white">
+<span class="material-icons">east</span>
+</button>
+</div>
+</div>
+<div class="flex overflow-x-auto gap-6 pb-8 px-4 md:px-20 no-scrollbar snap-x snap-mandatory">
+<div class="flex-shrink-0 w-80 md:w-96 snap-center">
+<div class="bg-forest-dark p-8 rounded-xl relative text-white h-full transform hover:-translate-y-2 transition-transform duration-300">
+<span class="material-icons absolute top-4 left-4 text-primary text-4xl opacity-50">format_quote</span>
+<p class="mt-6 text-lg font-light leading-relaxed">"I thought I was fit until I tried the Canyoning level 3. Absolute madness in the best way possible. The guides were legends."</p>
+<div class="mt-6 flex items-center gap-4">
+<img alt="User avatar" class="w-12 h-12 rounded-full border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-2CdvhkHselo_YOAelh-4pQ3qABBbHRAKR5_2EnPbT-cW3R5hTHOMDDyxv1jGDiTOjTA_VBj-bri_-IuJyozm8sX-r2pv-ZfGDubwYWzxr2Bd7nK94_QJZ91DHZ3dDirh63jDu5Mu1Sc76nOk6JdfAfII9gpWpt9FIQbeb4eZQOEO577q9shN54Yu0FoTjxpBkHxd0o9i8CqHj8wrkCpgei3ooI5AbscMPw7v0nqmTWG2dTocr25_hP9iGagi1WFkqJRklDf5yg"/>
+<div>
+<h4 class="font-bold text-primary">Alex M.</h4>
+<p class="text-xs text-gray-400">London, UK</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-80 md:w-96 snap-center">
+<div class="bg-primary/20 p-8 rounded-xl relative text-gray-900 dark:text-white h-full transform hover:-translate-y-2 transition-transform duration-300 border border-primary/30">
+<span class="material-icons absolute top-4 left-4 text-primary text-4xl opacity-50">format_quote</span>
+<p class="mt-6 text-lg font-light leading-relaxed">"The Sella descent was the highlight of our trip to Asturias. The equipment was top notch and the cider at the end was well earned!"</p>
+<div class="mt-6 flex items-center gap-4">
+<img alt="User avatar" class="w-12 h-12 rounded-full border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyN1Z5chZHPjwWkcAOFfexDszyvxWyI7aRuMplJ09Cw89wK9BkDGSExPfMoQTkuyIOf0w6JblWSBml0Os6FqAXPnUBLhGFEy-zR7B90OPuJ2YF7_N_W_wzAjiEhai69G_cb7XsClY9fuj1I1VAxcXCuCY7bIAM2aFqwzfmuCWZIWPPa9ece48o9PnIP8_LvntHBjTORdE3ChxQxbXs7BdVTSKF2gdd6cUUCUjkZKygqhmXaxmb89YVRalTtBEWUrOiuQpYOqMxow"/>
+<div>
+<h4 class="font-bold">Sarah &amp; Tom</h4>
+<p class="text-xs text-gray-500">Berlin, DE</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-80 md:w-96 snap-center">
+<div class="bg-forest-dark p-8 rounded-xl relative text-white h-full transform hover:-translate-y-2 transition-transform duration-300">
+<span class="material-icons absolute top-4 left-4 text-primary text-4xl opacity-50">format_quote</span>
+<p class="mt-6 text-lg font-light leading-relaxed">"Wild &amp; Bold lives up to the name. We did the Covadonga hike and the views were insane. Organization was flawless."</p>
+<div class="mt-6 flex items-center gap-4">
+<img alt="User avatar" class="w-12 h-12 rounded-full border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-zsJdDB9UaJ3hKBV2xSfyv3ZTVXzpZmy5qc1ZJuN5gyr32UfL5groAkV0pN5r2ryVia4MQ3DeKfmeiSdLwmbD-Iw21STqdV1001WX8Nz_gDR4wn0b-ZJSmnpw3O-RZD1xM1mpmFDBXV3gtcKqbw6Qb7sS77FGueTXRfEuy-oJPMCiTkcDlCVr8zADnGg6lryUZcrHx_GWzjywE05HTu91PKqQc9gzK8g1LO6w-LUpXG5VV6U9SvijLdt2ouztmQv-s6ewDS3LPA"/>
+<div>
+<h4 class="font-bold text-primary">Diego R.</h4>
+<p class="text-xs text-gray-400">Madrid, ES</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-80 md:w-96 snap-center">
+<div class="bg-white dark:bg-gray-800 p-8 rounded-xl relative text-gray-900 dark:text-white h-full transform hover:-translate-y-2 transition-transform duration-300 shadow-lg border border-gray-100 dark:border-gray-700">
+<span class="material-icons absolute top-4 left-4 text-primary text-4xl opacity-50">format_quote</span>
+<p class="mt-6 text-lg font-light leading-relaxed">"Booking was super easy. The floating button followed me everywhere so I finally caved in. No regrets!"</p>
+<div class="mt-6 flex items-center gap-4">
+<img alt="User avatar" class="w-12 h-12 rounded-full border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQkmHBgsfZMRInYs0eISs2bRILxkj_7gRbwhJy3XfLhomJTXaWlwcfEG_5E22eINuWR4ifzjxAc1c-rMkBMiUhBqJ9N8Apz8Hq8YdqF4k2gsYVOh1bS3C1IDQgriy35BbPTCT98hoF5Le8jA9UZYNQiyXrZ593B-obzaC3eOPrty1DTq65E4zGvEX6R52urVu8m3Ee_HkcpqfveC0HWcoJ6s0ELPagDOulLg3j3vRY4-zCGSXvzblmNs0asnboKBuFe0VIKgccPg"/>
+<div>
+<h4 class="font-bold">Elena K.</h4>
+<p class="text-xs text-gray-500">Kyiv, UA</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-primary relative">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+<div class="max-w-6xl mx-auto px-4 relative z-10">
+<div class="bg-white dark:bg-background-dark rounded-xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+<div class="p-10 md:w-1/3 flex flex-col justify-center">
+<h3 class="text-4xl font-bold mb-4 dark:text-white">FIND US IN THE WILD</h3>
+<p class="text-gray-600 dark:text-gray-400 mb-6">Our base camp is located in Arriondas, the gateway to the Picos de Europa.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-icons text-primary">place</span>
+</div>
+<span class="font-bold dark:text-white">Arriondas, Asturias</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-icons text-primary">phone</span>
+</div>
+<span class="font-bold dark:text-white">+34 985 000 000</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-icons text-primary">email</span>
+</div>
+<span class="font-bold dark:text-white">hello@wildandbold.com</span>
+</div>
+</div>
+</div>
+<div class="md:w-2/3 h-80 md:h-auto relative bg-gray-200">
+<img alt="Map of Asturias showing terrain" class="w-full h-full object-cover grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgeDCGMk0KU9slEun0L9jUCX-o9--EeCbeAKEd-9vs_yZfpK9yDk8HcAhTMCdMDekS8f9tPVAbfgPgjDU-EGi5dxUZNAuDo2Wqv9MzpS_I7CJzVd_L6t5LfDLeamr4pWp-d-QjW9tZjADW9krPkfEtJk7F72MKpLpbD9CE7V41xV0qTphdzIJq782R49ziLkwUHnE94EXKiKrbvy1O_TAKRrsI_YprFILqXvFRi_J8AJoozGuGnyfUSgASevjS-8qIAQYwStwPNg"/>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<span class="material-icons text-primary text-5xl drop-shadow-lg animate-bounce">location_on</span>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Base Camp</div>
+</div>
+<div class="absolute top-[40%] left-[60%] group cursor-pointer">
+<span class="material-icons text-white text-3xl drop-shadow-lg">location_on</span>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Lakes</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-background-dark text-white pt-20 pb-10 border-t-8 border-primary">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center space-x-2 mb-6">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center transform -rotate-6">
+<span class="material-icons text-black font-bold text-sm">terrain</span>
+</div>
+<span class="text-xl font-bold uppercase">Wild<span class="text-primary">&amp;</span>Bold</span>
+</div>
+<p class="text-gray-400 text-sm leading-relaxed">
+                    Active tourism agency registered in Asturias. TA-123-AS. Safety first, fun always.
+                </p>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6 uppercase tracking-widest text-sm">Adventures</h4>
+<ul class="space-y-3 text-sm text-gray-300">
+<li><a class="hover:text-primary transition-colors" href="#">Sella Descent</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Canyoning</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Cave Exploration</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Hiking Routes</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6 uppercase tracking-widest text-sm">Company</h4>
+<ul class="space-y-3 text-sm text-gray-300">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Safety Guides</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">FAQ</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6 uppercase tracking-widest text-sm">Newsletter</h4>
+<p class="text-gray-400 text-sm mb-4">Get the latest routes and offers.</p>
+<div class="flex">
+<input class="bg-white/10 border-none rounded-l-lg px-4 py-2 w-full text-white placeholder-gray-500 focus:ring-2 focus:ring-primary" placeholder="Email address" type="email"/>
+<button class="bg-primary text-black px-4 py-2 rounded-r-lg font-bold hover:bg-white transition-colors">GO</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+<p>© 2023 Wild &amp; Bold Tourism. All rights reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-white" href="#">Terms of Service</a>
+<a class="hover:text-white" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-8 right-8 z-50">
+<button class="group flex items-center justify-center bg-primary hover:bg-white text-black font-bold h-16 w-16 md:w-auto md:px-6 md:h-14 rounded-full fab-shadow hover:shadow-[0_10px_25px_rgba(255,255,255,0.4)] transition-all transform hover:-translate-y-1 border-2 border-black">
+<span class="material-icons text-2xl md:mr-2">calendar_today</span>
+<span class="hidden md:inline uppercase tracking-wider">Book Now</span>
+</button>
+</div>
+
+</body></html>

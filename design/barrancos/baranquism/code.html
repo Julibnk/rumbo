@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Canyoning: The Depths of Asturias | Wild &amp; Bold</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#8cb950",
+              "background-light": "#f6f8f6",
+              "background-dark": "#225133",
+              "forest-dark": "#225133",
+              "stone-gray": "#e8ebe8",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            backgroundImage: {
+                'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+            }
+          },
+        },
+      }
+    </script>
+<style type="text/tailwindcss">
+        .clip-slant-bottom {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        .clip-slant-top {
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
+        .text-stroke-sm {
+            -webkit-text-stroke: 1px black;
+            color: transparent;
+        }
+        .dark .text-stroke-sm {
+            -webkit-text-stroke: 1px white;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .fab-shadow {
+            box-shadow: 0 10px 20px rgba(140, 185, 80, 0.4);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-item:focus-within .accordion-content {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 font-display selection:bg-primary selection:text-black overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center space-x-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center transform -rotate-6 shadow-lg border-2 border-black dark:border-white">
+<span class="material-icons text-black font-bold">terrain</span>
+</div>
+<span class="text-2xl font-bold tracking-tighter uppercase dark:text-white">Wild<span class="text-primary">&amp;</span>Bold</span>
+</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Adventures</a>
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Locations</a>
+<a class="text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Stories</a>
+<button class="bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-full font-bold uppercase text-sm hover:bg-primary hover:text-black transition-all transform hover:-translate-y-1 shadow-lg">
+                    Plan Trip
+                </button>
+</div>
+<div class="md:hidden">
+<button class="text-gray-900 dark:text-white hover:text-primary">
+<span class="material-icons text-3xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<header class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden clip-slant-bottom">
+<div class="absolute inset-0 z-0">
+<img alt="Waterfall rappel during a canyoning adventure" class="w-full h-full object-cover filter brightness-[0.7] contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHo8H1YDDwVY_nHJkFtZ53bFQQpLxkrW92Y2pGZUpGCnffoA9yJSLdHeZmwzdciywYZ-dnUaZuxzLGj6V_Eifq1oIEvEX4oaGTY4Z93IsOeDhETmFupB03ptakbfIcOWN7A3zujNp2lDN3c58WABsY0H-FcyhZMhh_snIIfBLS3Kmnk7JYEg7ZXIzJnCxmnMs8GssiiosuGOYv5rZXvUrwa4XNndWz6RfNCQU6iWBRK2hFWN-MLFYuSEJpzvzCdPPLAT2suj8f-g"/>
+</div>
+<div class="absolute inset-0 z-10 bg-[#225133]/40 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
+<div class="relative z-20 container mx-auto px-4 text-center">
+<div class="inline-block mb-4 px-4 py-1 bg-primary text-black font-bold text-xs uppercase tracking-[0.2em] rounded-full rotate-2 transform border-2 border-black">
+            Asturias, Spain
+        </div>
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-tighter mb-6 drop-shadow-2xl uppercase">
+            CANYONING:<br/>
+<span class="text-primary italic relative inline-block">
+                THE DEPTHS OF ASTURIAS
+                <svg class="absolute w-full h-3 -bottom-1 left-0 text-white opacity-80" fill="none" viewBox="0 0 200 9" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99999C18.4924 3.00001 77.5002 -3.49997 198 2.50001" stroke="currentColor" stroke-linecap="round" stroke-width="3"></path></svg>
+</span>
+</h1>
+<p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto mb-10 font-medium">
+            Leap into the unknown. Rappel down vertical waterfalls and swim through ancient limestone corridors.
+        </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-primary hover:bg-white text-black font-bold text-lg px-10 py-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(34,81,51,1)] hover:shadow-[2px_2px_0px_0px_rgba(34,81,51,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all border-2 border-black uppercase tracking-widest">
+                BOOK YOUR SPOT
+            </button>
+</div>
+</div>
+</header>
+<section class="py-24 bg-background-light dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<div class="lg:col-span-7 space-y-6">
+<span class="text-primary font-bold tracking-widest uppercase text-sm">The Experience</span>
+<h2 class="text-4xl md:text-5xl font-bold leading-tight dark:text-white">
+                    DESCEND INTO <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#225133]">UNTOUCHED WILDERNESS.</span>
+</h2>
+<p class="text-xl text-gray-600 dark:text-gray-300 font-light leading-relaxed">
+                    This isn't a walk in the park. Canyoning in Asturias is a raw, sensory-overload journey through the planet's natural plumbing. You'll navigate narrow slots carved over millennia, using ropes to descend gushing waterfalls and sliding down natural stone chutes into emerald pools.
+                </p>
+<p class="text-lg text-gray-500 dark:text-gray-400 font-light">
+                    Our expert guides ensure your safety while pushing your limits in the stunning Picos de Europa surroundings.
+                </p>
+</div>
+<div class="lg:col-span-5 bg-white dark:bg-background-dark/50 p-8 rounded-2xl border-2 border-primary/20 shadow-xl">
+<h3 class="text-2xl font-bold mb-8 uppercase tracking-tight dark:text-white">Technical Specs</h3>
+<div class="grid grid-cols-1 gap-6">
+<div class="flex items-center p-4 bg-background-light dark:bg-[#225133]/20 rounded-xl">
+<span class="material-symbols-outlined text-4xl text-primary mr-4">schedule</span>
+<div>
+<p class="text-xs uppercase font-bold text-gray-400">Duration</p>
+<p class="text-xl font-bold dark:text-white">Approx. 4 Hours</p>
+</div>
+</div>
+<div class="flex items-center p-4 bg-background-light dark:bg-[#225133]/20 rounded-xl">
+<span class="material-symbols-outlined text-4xl text-primary mr-4">signal_cellular_alt</span>
+<div>
+<p class="text-xs uppercase font-bold text-gray-400">Difficulty</p>
+<p class="text-xl font-bold dark:text-white">Medium / Physical</p>
+</div>
+</div>
+<div class="flex items-center p-4 bg-background-light dark:bg-[#225133]/20 rounded-xl">
+<span class="material-symbols-outlined text-4xl text-primary mr-4">person_add</span>
+<div>
+<p class="text-xs uppercase font-bold text-gray-400">Min. Age</p>
+<p class="text-xl font-bold dark:text-white">12 Years Old</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-[#225133] relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
+<div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+<h2 class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tighter">READY FOR THE ADRENALINE?</h2>
+<button class="bg-primary hover:bg-white text-black font-black text-2xl px-12 py-6 rounded-2xl transition-all transform hover:scale-105 shadow-2xl uppercase tracking-tighter border-b-8 border-black/20">
+            SECURE YOUR ADVENTURE
+        </button>
+</div>
+</section>
+<section class="py-24 bg-white dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4">
+<div class="mb-12">
+<h2 class="text-4xl font-bold uppercase dark:text-white">Pricing &amp; Packages</h2>
+<div class="w-20 h-1.5 bg-primary mt-4"></div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#225133] text-white">
+<th class="p-6 text-lg uppercase tracking-wider font-bold rounded-tl-xl">Package Type</th>
+<th class="p-6 text-lg uppercase tracking-wider font-bold">Details</th>
+<th class="p-6 text-lg uppercase tracking-wider font-bold rounded-tr-xl text-right">Price</th>
+</tr>
+</thead>
+<tbody class="dark:bg-background-dark/30">
+<tr class="border-b border-gray-200 dark:border-gray-800">
+<td class="p-6 font-bold text-xl dark:text-white">Individual</td>
+<td class="p-6 text-gray-500 dark:text-gray-400 italic">Single entry, full equipment included.</td>
+<td class="p-6 text-right font-bold text-2xl text-primary">€45 / person</td>
+</tr>
+<tr class="border-b border-gray-200 dark:border-gray-800 bg-primary/5">
+<td class="p-6 font-bold text-xl dark:text-white">Small Group (4-8)</td>
+<td class="p-6 text-gray-500 dark:text-gray-400 italic">Friends &amp; Family discount.</td>
+<td class="p-6 text-right font-bold text-2xl text-primary">€40 / person</td>
+</tr>
+<tr class="border-b border-gray-200 dark:border-gray-800">
+<td class="p-6 font-bold text-xl dark:text-white">Large Group (9+)</td>
+<td class="p-6 text-gray-500 dark:text-gray-400 italic">Corporate &amp; Large group rates.</td>
+<td class="p-6 text-right font-bold text-2xl text-primary">€35 / person</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="py-24 bg-stone-gray dark:bg-[#1a3a25] clip-slant-top clip-slant-bottom">
+<div class="max-w-7xl mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-5xl font-bold dark:text-white uppercase">Action Gallery</h2>
+<p class="text-gray-500 mt-2">Captured in the heart of the gorge.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="md:col-span-2 md:row-span-2 overflow-hidden rounded-2xl group relative h-80 md:h-auto">
+<img alt="High action canyoning" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_J2iy_sRCFXDohXu3MQRWvra8mXXQmCz4PcFCAA3jHJAjPEl2tgo9v9qPAZGzX0qwnOhhIH2xPpSwK0rJbgeJQcRF9D7qkXRaNvyfw09H3sF1F4XzXgr9B4HCd3z1ws2Fz2wJq4IILC9m3MRVqat6tBlBjdNAvQxbvclaZIdCMmPtUwKwLJyinFQS8ndgUFf-FeeO78ab7OiYITmcuWYlrOjC5rizGKie-eKao0gvgx69-r9GKBuXTz5oMM8n_FxMnut1ULC_xg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="overflow-hidden rounded-2xl group relative h-64">
+<img alt="Canyoning jump" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhNkCzdhqMxe__0v7LXIkR2_q_tId_TEJG-6JVYJPr3kbNQL7TxHiHS6eUWHv7J2po_m96Shs2HGloR9KdykXjCCiHg-OMn9-VaTdXVaeob-0_1bRzug8_IoRVg1UTnTTsulUGd4GDJVd6tmoSWbo10Vxej1mSlA1p3S4uLZuS4RSaehV6VEXHpb28TN8GMfCCWRQ9_JORgAaKP2_vrpceX3AiqgnMSD7Ff7NqGOsjx6NqBzpcb-0vsOrhqQt_9b79fLabGXAJeQ"/>
+</div>
+<div class="overflow-hidden rounded-2xl group relative h-64">
+<img alt="Canyoning equipment" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAClcePJ7LUbyYwnh79wQpKJiSaM13yf79Tn7afyqo8f4X-n7p5hT1c0HmWbdoVts18Yw6VSEhY1N-0OdFGM8wiHvjjdXdDP4GVVCl5moycJFPUJ8zhfRzW5bN8p-99Szhv8ZNoedAibSYPowsLAhJ4Jp0f9WD-gPsqwYLeDQSXVhFU1-LVKyoZG9AjG6JInwtFLoS-q3Qvq-KOdC5ina6Me6Qf_CGk0eko-CGwyj5h2fj2GngMim1wwEn5KRRFinuHB3xUh7UpFg"/>
+</div>
+<div class="md:col-span-2 overflow-hidden rounded-2xl group relative h-64">
+<img alt="Limestone gorge view" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_v6DENTQ1FTwT_nQnn9Mg4xu_eoyZt3-RSewYEFcJ3IR-S7RgajSc0X-p0SoGZktkRtgUqXVdg5Aefrraf8soxMATQd0W6Tsona_cAOVPVutx2Y8_U947RNavkCm2PI25eGy6GQmvNephlNuPvUZ3axMUfzEgCRaa0Fg5kfyVHWul_mpwj2PznmamTBzvHpQNsu6udqDiY8jS8w-7c_HTMFbpBjilzv7HaGYU6XAbxfopj0JHv14A33gHas90O2NE8XL-52drCw"/>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16">
+<div>
+<h2 class="text-3xl font-bold mb-8 uppercase dark:text-white">Daily Schedule</h2>
+<div class="space-y-4">
+<div class="bg-white dark:bg-background-dark border-l-4 border-primary p-6 shadow-md flex justify-between items-center">
+<div>
+<h4 class="font-bold text-xl dark:text-white">Morning Shift</h4>
+<p class="text-gray-500">The early bird gets the quietest canyons.</p>
+</div>
+<span class="bg-[#225133] text-primary px-4 py-2 rounded-lg font-bold">09:30 AM</span>
+</div>
+<div class="bg-white dark:bg-background-dark border-l-4 border-primary p-6 shadow-md flex justify-between items-center">
+<div>
+<h4 class="font-bold text-xl dark:text-white">Afternoon Shift</h4>
+<p class="text-gray-500">Perfect lighting for your action shots.</p>
+</div>
+<span class="bg-[#225133] text-primary px-4 py-2 rounded-lg font-bold">15:30 PM</span>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-3xl font-bold mb-8 uppercase dark:text-white">FAQ</h2>
+<div class="space-y-4">
+<div class="accordion-item group border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden" tabindex="0">
+<div class="p-4 bg-white dark:bg-background-dark/50 flex justify-between items-center cursor-pointer font-bold dark:text-white">
+                        What should I bring?
+                        <span class="material-icons text-primary group-focus:rotate-180 transition-transform">expand_more</span>
+</div>
+<div class="accordion-content bg-gray-50 dark:bg-background-dark px-4">
+<div class="py-4 text-gray-600 dark:text-gray-400">
+                            Just a swimsuit and a towel. We provide all professional gear: wetsuits, helmets, harnesses, and specialized canyoning boots.
+                        </div>
+</div>
+</div>
+<div class="accordion-item group border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden" tabindex="0">
+<div class="p-4 bg-white dark:bg-background-dark/50 flex justify-between items-center cursor-pointer font-bold dark:text-white">
+                        Is it safe if I can't swim?
+                        <span class="material-icons text-primary group-focus:rotate-180 transition-transform">expand_more</span>
+</div>
+<div class="accordion-content bg-gray-50 dark:bg-background-dark px-4">
+<div class="py-4 text-gray-600 dark:text-gray-400">
+                            Basic swimming ability is recommended for confidence, but our high-buoyancy wetsuits keep you afloat effortlessly. Your guide will assist you in all water sections.
+                        </div>
+</div>
+</div>
+<div class="accordion-item group border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden" tabindex="0">
+<div class="p-4 bg-white dark:bg-background-dark/50 flex justify-between items-center cursor-pointer font-bold dark:text-white">
+                        Do I need previous experience?
+                        <span class="material-icons text-primary group-focus:rotate-180 transition-transform">expand_more</span>
+</div>
+<div class="accordion-content bg-gray-50 dark:bg-background-dark px-4">
+<div class="py-4 text-gray-600 dark:text-gray-400">
+                            Not for our level 1 and 2 canyons. We'll teach you everything you need to know about rappelling and safety on-site.
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-[#225133] text-white pt-20 pb-10 border-t-8 border-primary">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center space-x-2 mb-6">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center transform -rotate-6">
+<span class="material-icons text-black font-bold text-sm">terrain</span>
+</div>
+<span class="text-xl font-bold uppercase">Wild<span class="text-primary">&amp;</span>Bold</span>
+</div>
+<p class="text-gray-400 text-sm leading-relaxed">
+                    Active tourism agency registered in Asturias. TA-123-AS. Safety first, fun always.
+                </p>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6 uppercase tracking-widest text-sm">Adventures</h4>
+<ul class="space-y-3 text-sm text-gray-300">
+<li><a class="hover:text-primary transition-colors" href="#">Sella Descent</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Canyoning</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Cave Exploration</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Hiking Routes</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6 uppercase tracking-widest text-sm">Company</h4>
+<ul class="space-y-3 text-sm text-gray-300">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Safety Guides</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">FAQ</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6 uppercase tracking-widest text-sm">Newsletter</h4>
+<p class="text-gray-400 text-sm mb-4">Get the latest routes and offers.</p>
+<div class="flex">
+<input class="bg-white/10 border-none rounded-l-lg px-4 py-2 w-full text-white placeholder-gray-500 focus:ring-2 focus:ring-primary" placeholder="Email address" type="email"/>
+<button class="bg-primary text-black px-4 py-2 rounded-r-lg font-bold hover:bg-white transition-colors">GO</button>
+</div>
+</div>
+</div>
+<div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+<p>© 2023 Wild &amp; Bold Tourism. All rights reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-white" href="#">Terms of Service</a>
+<a class="hover:text-white" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-8 right-8 z-50">
+<button class="group flex items-center justify-center bg-primary hover:bg-white text-black font-bold h-16 w-16 md:w-auto md:px-8 md:h-16 rounded-full fab-shadow hover:shadow-[0_10px_25px_rgba(255,255,255,0.4)] transition-all transform hover:-translate-y-2 border-2 border-black">
+<span class="material-icons text-2xl md:mr-2">calendar_today</span>
+<span class="hidden md:inline uppercase tracking-widest font-black">BOOK NOW</span>
+</button>
+</div>
+
+</body></html>
