@@ -1,0 +1,211 @@
+---
+import Base from "../layouts/Base.astro";
+import HeroSection from "../components/HeroSection.astro";
+import TechSpecs from "../components/TechSpecs.astro";
+import CTABanner from "../components/CTABanner.astro";
+import PricingTable from "../components/PricingTable.astro";
+import Schedule from "../components/Schedule.astro";
+
+const specs = [
+  { icon: "schedule", label: "Duracion", value: "Aprox. 3.5 horas" },
+  { icon: "directions_bus", label: "Transporte", value: "Incluido desde Arriondas" },
+  { icon: "signal_cellular_alt", label: "Dificultad", value: "Baja / Sin dificultad fisica" },
+  { icon: "person", label: "Edad minima", value: "Todas las edades" },
+  { icon: "payments", label: "Precio desde", value: "25€ / persona" },
+];
+
+const pricing = [
+  {
+    name: "Adultos",
+    details: "Precio por persona",
+    price: "35€",
+  },
+  {
+    name: "Ninos (menores de 15)",
+    details: "Tarifa reducida para menores",
+    price: "25€",
+  },
+];
+
+const shifts = [
+  {
+    name: "Salida diaria",
+    description: "Desde nuestras instalaciones en Arriondas",
+    time: "09:30h",
+  },
+  {
+    name: "Fin de actividad",
+    description: "Regreso aproximado a Arriondas",
+    time: "~13:00h",
+  },
+];
+---
+
+<Base
+  title="Visita Lagos de Covadonga"
+  description="Descubre los Lagos de Covadonga con Rumbo Norte Asturias. Visita guiada al Santuario de Covadonga y los lagos Enol y Ercina en los Picos de Europa. Desde 25€ por persona."
+>
+  <!-- Hero -->
+  <HeroSection
+    variant="split"
+    title="LAGOS DE COVADONGA:"
+    titleAccent="DESCUBRE UN PARAISO"
+    subtitle="Tesoro natural y cultural lleno de misterio, leyendas y belleza en los Picos de Europa."
+    image="https://lh3.googleusercontent.com/aida-public/AB6AXuAClcePJ7LUbyYwnh79wQpKJiSaM13yf79Tn7afyqo8f4X-n7p5hT1c0HmWbdoVts18Yw6VSEhY1N-0OdFGM8wiHvjjdXdDP4GVVCl5moycJFPUJ8zhfRzW5bN8p-99Szhv8ZNoedAibSYPowsLAhJ4Jp0f9WD-gPsqwYLeDQSXVhFU1-LVKyoZG9AjG6JInwtFLoS-q3Qvq-KOdC5ina6Me6Qf_CGk0eko-CGwyj5h2fj2GngMim1wwEn5KRRFinuHB3xUh7UpFg"
+    imageAlt="Lagos de Covadonga en el Parque Nacional de los Picos de Europa"
+    ctaText="Reserva tu visita"
+  />
+
+  <!-- Description + Tech Specs -->
+  <section class="py-24 bg-background-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <div class="lg:col-span-7 space-y-6">
+          <span
+            class="text-primary font-bold tracking-widest uppercase text-sm"
+            >La experiencia</span
+          >
+          <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+            UN ENTORNO <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest-dark"
+            >
+              PRIVILEGIADO
+            </span>
+          </h2>
+          <p class="text-xl text-gray-600 font-light leading-relaxed">
+            Los Lagos de Covadonga y su Santuario representan un tesoro natural
+            y cultural lleno de misterio, leyendas y belleza. Rumbo Norte
+            Asturias organiza visitas guiadas donde los participantes descubren
+            el encanto y la importancia de este destino.
+          </p>
+          <p class="text-lg text-gray-600 italic border-l-4 border-primary pl-4 mt-6">
+            Un guia profesional acompana a los visitantes durante todo el
+            recorrido, explicando la historia del Santuario de Covadonga y los
+            lagos Enol y Ercina.
+          </p>
+        </div>
+        <div class="lg:col-span-5">
+          <TechSpecs title="Informacion rapida" specs={specs} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detalles de la actividad -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-12">
+        <h2 class="text-4xl font-bold uppercase">La experiencia</h2>
+        <div class="w-20 h-1.5 bg-primary mt-4"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-background-light p-8 rounded-2xl border-2 border-primary/20">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+              <span class="material-icons text-primary text-2xl">explore</span>
+            </div>
+            <h3 class="text-2xl font-bold">Recorrido guiado</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Recorrido a pie con multiples paradas para explicaciones del guia
+            sobre la historia, naturaleza y leyendas del lugar.
+          </p>
+        </div>
+        <div class="bg-background-light p-8 rounded-2xl border-2 border-primary/20">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+              <span class="material-icons text-primary text-2xl">groups</span>
+            </div>
+            <h3 class="text-2xl font-bold">Grupos reducidos</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Acceso a un entorno privilegiado sin las aglomeraciones tipicas.
+            Disfruta de la naturaleza en calma.
+          </p>
+        </div>
+        <div class="bg-background-light p-8 rounded-2xl border-2 border-primary/20">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+              <span class="material-icons text-primary text-2xl"
+                >directions_bus</span
+              >
+            </div>
+            <h3 class="text-2xl font-bold">Transporte incluido</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Proporcionado por la empresa desde las instalaciones de Arriondas.
+            No te preocupes por nada.
+          </p>
+        </div>
+        <div class="bg-background-light p-8 rounded-2xl border-2 border-primary/20">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+              <span class="material-icons text-primary text-2xl"
+                >landscape</span
+              >
+            </div>
+            <h3 class="text-2xl font-bold">Parque Nacional</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            Descubre el Parque Nacional de los Picos de Europa, uno de los
+            espacios naturales mas impresionantes de Espana.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner
+    title="LISTO PARA DESCUBRIR LOS LAGOS?"
+    ctaText="Reserva tu visita"
+  />
+
+  <!-- Pricing -->
+  <PricingTable title="Tarifas" rows={pricing} />
+
+  <!-- Que llevar -->
+  <section class="py-20 bg-background-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-12">
+        <h2 class="text-4xl font-bold uppercase">Que llevar</h2>
+        <div class="w-20 h-1.5 bg-primary mt-4"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg">
+          <span class="material-icons text-primary">checkroom</span>
+          <span class="font-medium">Ropa comoda y deportiva</span>
+        </div>
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg">
+          <span class="material-icons text-primary">hiking</span>
+          <span class="font-medium">Calzado comodo</span>
+        </div>
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg">
+          <span class="material-icons text-primary">wb_sunny</span>
+          <span class="font-medium">Gorra para el sol</span>
+        </div>
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg">
+          <span class="material-icons text-primary">photo_camera</span>
+          <span class="font-medium">Camara de fotos</span>
+        </div>
+      </div>
+      <div class="mt-8 bg-stone-gray p-6 rounded-xl">
+        <p class="text-gray-600 italic">
+          <span class="material-icons text-primary inline align-middle mr-2"
+            >info</span
+          >
+          La actividad no implica ninguna dificultad fisica especial. Es apta para
+          todas las edades y niveles de forma fisica.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section class="py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <Schedule title="Horarios" shifts={shifts} />
+    </div>
+  </section>
+</Base>
