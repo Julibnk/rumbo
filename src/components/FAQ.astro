@@ -1,0 +1,46 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  items: FAQItem[];
+}
+
+const { title = "Preguntas frecuentes", items } = Astro.props;
+---
+
+<div>
+  <h2 class="text-3xl font-bold mb-8 uppercase">{title}</h2>
+  <div class="space-y-4">
+    {
+      items.map((item) => (
+        <div class="accordion-item border border-gray-200 rounded-xl overflow-hidden">
+          <button
+            class="accordion-trigger w-full p-4 bg-white flex justify-between items-center cursor-pointer font-bold text-left"
+            type="button"
+          >
+            {item.question}
+            <span class="material-icons text-primary accordion-icon transition-transform">
+              expand_more
+            </span>
+          </button>
+          <div class="accordion-content bg-gray-50 px-4">
+            <div class="py-4 text-gray-600">{item.answer}</div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".accordion-trigger").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".accordion-item");
+      item?.classList.toggle("open");
+    });
+  });
+</script>

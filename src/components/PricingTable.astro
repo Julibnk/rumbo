@@ -1,0 +1,65 @@
+---
+interface PricingRow {
+  name: string;
+  details: string;
+  price: string;
+}
+
+interface Props {
+  title?: string;
+  columns?: { name: string; details: string; price: string };
+  rows: PricingRow[];
+}
+
+const {
+  title = "Tarifas",
+  columns = { name: "Nivel", details: "Detalles", price: "Precio" },
+  rows,
+} = Astro.props;
+---
+
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="mb-12">
+      <h2 class="text-4xl font-bold uppercase">{title}</h2>
+      <div class="w-20 h-1.5 bg-primary mt-4"></div>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-forest-dark text-white">
+            <th
+              class="p-6 text-lg uppercase tracking-wider font-bold rounded-tl-xl"
+              >{columns.name}</th
+            >
+            <th class="p-6 text-lg uppercase tracking-wider font-bold"
+              >{columns.details}</th
+            >
+            <th
+              class="p-6 text-lg uppercase tracking-wider font-bold rounded-tr-xl text-right"
+              >{columns.price}</th
+            >
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((row, i) => (
+              <tr
+                class:list={[
+                  "border-b border-gray-200",
+                  i % 2 === 1 && "bg-primary/5",
+                ]}
+              >
+                <td class="p-6 font-bold text-xl">{row.name}</td>
+                <td class="p-6 text-gray-500 italic">{row.details}</td>
+                <td class="p-6 text-right font-bold text-2xl text-primary">
+                  {row.price}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

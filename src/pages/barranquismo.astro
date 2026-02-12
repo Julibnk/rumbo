@@ -1,0 +1,242 @@
+---
+import Base from "../layouts/Base.astro";
+import HeroSection from "../components/HeroSection.astro";
+import TechSpecs from "../components/TechSpecs.astro";
+import CTABanner from "../components/CTABanner.astro";
+import PricingTable from "../components/PricingTable.astro";
+import ImageGallery from "../components/ImageGallery.astro";
+import Schedule from "../components/Schedule.astro";
+import FAQ from "../components/FAQ.astro";
+
+const specs = [
+  { icon: "schedule", label: "Duracion", value: "Aprox. 4 horas" },
+  { icon: "signal_cellular_alt", label: "Dificultad", value: "Media / Fisica" },
+  { icon: "person_add", label: "Edad minima", value: "12 anos" },
+];
+
+const pricing = [
+  {
+    name: "Nivel 1",
+    details: "Iniciacion, pensado para los mas peques.",
+    price: "50€ / persona",
+  },
+  {
+    name: "Nivel 2",
+    details: "Los mas divertidos.",
+    price: "50€ / persona",
+  },
+  {
+    name: "Nivel 3",
+    details: "Avanzado.",
+    price: "60€ / persona",
+  },
+  {
+    name: "Nivel 4",
+    details: "Largos, resistencia.",
+    price: "90€ / persona",
+  },
+  {
+    name: "Coastering",
+    details: "El mar desde otra perspectiva.",
+    price: "45€ / persona",
+  },
+];
+
+const galleryImages = [
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuA_J2iy_sRCFXDohXu3MQRWvra8mXXQmCz4PcFCAA3jHJAjPEl2tgo9v9qPAZGzX0qwnOhhIH2xPpSwK0rJbgeJQcRF9D7qkXRaNvyfw09H3sF1F4XzXgr9B4HCd3z1ws2Fz2wJq4IILC9m3MRVqat6tBlBjdNAvQxbvclaZIdCMmPtUwKwLJyinFQS8ndgUFf-FeeO78ab7OiYITmcuWYlrOjC5rizGKie-eKao0gvgx69-r9GKBuXTz5oMM8n_FxMnut1ULC_xg",
+    alt: "Barranquismo en accion",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAhNkCzdhqMxe__0v7LXIkR2_q_tId_TEJG-6JVYJPr3kbNQL7TxHiHS6eUWHv7J2po_m96Shs2HGloR9KdykXjCCiHg-OMn9-VaTdXVaeob-0_1bRzug8_IoRVg1UTnTTsulUGd4GDJVd6tmoSWbo10Vxej1mSlA1p3S4uLZuS4RSaehV6VEXHpb28TN8GMfCCWRQ9_JORgAaKP2_vrpceX3AiqgnMSD7Ff7NqGOsjx6NqBzpcb-0vsOrhqQt_9b79fLabGXAJeQ",
+    alt: "Salto de barranco",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAClcePJ7LUbyYwnh79wQpKJiSaM13yf79Tn7afyqo8f4X-n7p5hT1c0HmWbdoVts18Yw6VSEhY1N-0OdFGM8wiHvjjdXdDP4GVVCl5moycJFPUJ8zhfRzW5bN8p-99Szhv8ZNoedAibSYPowsLAhJ4Jp0f9WD-gPsqwYLeDQSXVhFU1-LVKyoZG9AjG6JInwtFLoS-q3Qvq-KOdC5ina6Me6Qf_CGk0eko-CGwyj5h2fj2GngMim1wwEn5KRRFinuHB3xUh7UpFg",
+    alt: "Equipamiento de barranquismo",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuA_v6DENTQ1FTwT_nQnn9Mg4xu_eoyZt3-RSewYEFcJ3IR-S7RgajSc0X-p0SoGZktkRtgUqXVdg5Aefrraf8soxMATQd0W6Tsona_cAOVPVutx2Y8_U947RNavkCm2PI25eGy6GQmvNephlNuPvUZ3axMUfzEgCRaa0Fg5kfyVHWul_mpwj2PznmamTBzvHpQNsu6udqDiY8jS8w-7c_HTMFbpBjilzv7HaGYU6XAbxfopj0JHv14A33gHas90O2NE8XL-52drCw",
+    alt: "Vista del desfiladero",
+  },
+];
+
+const shifts = [
+  {
+    name: "Turno de manana",
+    description: "Madruga y disfruta de los barrancos en calma.",
+    time: "09:15h",
+  },
+  {
+    name: "Turno de tarde",
+    description: "La luz perfecta para tus fotos de accion.",
+    time: "15:00h",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Que ropa tengo que llevar?",
+    answer:
+      "Banador o ropa interior para poner debajo del traje de neopreno, calzado con buena suela y utiles de ducha para cuando acabemos la actividad.",
+  },
+  {
+    question: "Que material proporciona la empresa?",
+    answer:
+      "Traje de neopreno, calcetin de neopreno, arnes, casco, material colectivo (cuerdas, etc.), vestuarios, transporte, guias titulados, seguro de Responsabilidad Civil y Accidentes.",
+  },
+  {
+    question: "Necesito experiencia previa?",
+    answer:
+      "No para los niveles 1 y 2. Nuestros guias te ensenaran todo lo necesario sobre rappel y seguridad in situ.",
+  },
+];
+---
+
+<Base
+  title="Barranquismo"
+  description="Barranquismo en Asturias con Rumbo Norte. Descenso de barrancos con 4 niveles de dificultad y coastering. Desde 45€ por persona."
+>
+  <!-- Hero -->
+  <HeroSection
+    title="BARRANQUISMO:"
+    titleAccent="DIVERSION EN ESTADO PURO"
+    subtitle="Salta a lo desconocido. Desciende cascadas verticales y nada por corredores de piedra caliza milenarios."
+    image="https://lh3.googleusercontent.com/aida-public/AB6AXuCHo8H1YDDwVY_nHJkFtZ53bFQQpLxkrW92Y2pGZUpGCnffoA9yJSLdHeZmwzdciywYZ-dnUaZuxzLGj6V_Eifq1oIEvEX4oaGTY4Z93IsOeDhETmFupB03ptakbfIcOWN7A3zujNp2lDN3c58WABsY0H-FcyhZMhh_snIIfBLS3Kmnk7JYEg7ZXIzJnCxmnMs8GssiiosuGOYv5rZXvUrwa4XNndWz6RfNCQU6iWBRK2hFWN-MLFYuSEJpzvzCdPPLAT2suj8f-g"
+    imageAlt="Rappel en cascada durante una aventura de barranquismo"
+    ctaText="RESERVA TU PLAZA"
+  />
+
+  <!-- Description + Tech Specs -->
+  <section class="py-24 bg-background-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <div class="lg:col-span-7 space-y-6">
+          <span
+            class="text-primary font-bold tracking-widest uppercase text-sm"
+            >La experiencia</span
+          >
+          <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+            DESCIENDE A LA <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest-dark"
+            >
+              NATURALEZA SALVAJE.
+            </span>
+          </h2>
+          <p class="text-xl text-gray-600 font-light leading-relaxed">
+            El barranquismo o descenso de barrancos es uno de los deportes de
+            aventura que mas se practican en la actualidad. Consiste en progresar
+            por el cauce de un rio debidamente equipados, utilizando diferentes
+            tecnicas para ir superando los desniveles y caminos que el agua ha
+            abierto entre las montanas: saltos a pozas, toboganes, pequenos
+            destrepes o rappel.
+          </p>
+          <p class="text-lg text-gray-500 font-light">
+            En Rumbo Norte hemos creado distintos niveles con dificultades
+            progresivas para que nadie se quede sin disfrutar de esta apasionante
+            actividad.
+          </p>
+        </div>
+        <div class="lg:col-span-5">
+          <TechSpecs specs={specs} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner
+    title="LISTO PARA LA ADRENALINA?"
+    ctaText="RESERVA TU AVENTURA"
+  />
+
+  <!-- Pricing -->
+  <PricingTable title="Tarifas y niveles" rows={pricing} />
+
+  <!-- Gallery -->
+  <ImageGallery
+    title="Galeria de accion"
+    subtitle="Capturado en el corazon del barranco."
+    images={galleryImages}
+  />
+
+  <!-- Schedule + FAQ -->
+  <section class="py-24 bg-background-light">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16">
+      <Schedule shifts={shifts} />
+      <FAQ items={faqItems} />
+    </div>
+  </section>
+
+  <!-- Coastering Section -->
+  <section class="py-20 bg-forest-dark relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"
+    >
+    </div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <span
+            class="inline-block px-3 py-1 bg-primary text-black font-bold text-xs uppercase tracking-widest rounded-full border-2 border-black"
+          >
+            Nueva actividad
+          </span>
+          <h2
+            class="text-4xl md:text-5xl font-bold text-white leading-tight uppercase"
+          >
+            COASTERING
+          </h2>
+          <p class="text-xl text-gray-300 font-light leading-relaxed">
+            Mezclaremos actividades acuaticas y terrestres para disfrutar de
+            sensaciones de libertad. Caminando y saltando nos abriremos paso
+            para conocer los acantilados de Ribadesella, que nos ofrecen el
+            entorno perfecto para conocer el mar de una manera diferente y
+            cercana.
+          </p>
+          <p class="text-primary font-bold text-2xl">
+            45€ <span class="text-base text-gray-400 font-normal"
+              >/ persona</span
+            >
+          </p>
+          <a
+            href="https://www.reservaonline.support/rumbonorte/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block bg-primary hover:bg-white text-black font-bold px-8 py-4 rounded-xl shadow-brutal border-2 border-black uppercase tracking-widest transition-all hover:shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px]"
+          >
+            Reserva coastering
+          </a>
+        </div>
+        <div class="relative group">
+          <div
+            class="absolute inset-0 bg-primary rounded-xl transform rotate-3 translate-x-2 translate-y-2 group-hover:rotate-6 transition-transform duration-300"
+          >
+          </div>
+          <div
+            class="relative rounded-xl overflow-hidden border-4 border-white shadow-2xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"
+          >
+            <img
+              alt="Coastering en los acantilados de Ribadesella"
+              class="w-full h-[400px] object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_v6DENTQ1FTwT_nQnn9Mg4xu_eoyZt3-RSewYEFcJ3IR-S7RgajSc0X-p0SoGZktkRtgUqXVdg5Aefrraf8soxMATQd0W6Tsona_cAOVPVutx2Y8_U947RNavkCm2PI25eGy6GQmvNephlNuPvUZ3axMUfzEgCRaa0Fg5kfyVHWul_mpwj2PznmamTBzvHpQNsu6udqDiY8jS8w-7c_HTMFbpBjilzv7HaGYU6XAbxfopj0JHv14A33gHas90O2NE8XL-52drCw"
+            />
+            <div
+              class="absolute bottom-4 left-4 bg-white/90 px-4 py-2 rounded-lg backdrop-blur-sm"
+            >
+              <span
+                class="text-xs font-bold uppercase tracking-widest flex items-center gap-1"
+              >
+                <span class="material-icons text-primary text-sm"
+                  >location_on</span
+                >
+                Ribadesella
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

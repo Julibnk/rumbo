@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  ctaText: string;
+  ctaHref?: string;
+}
+
+const {
+  title,
+  ctaText,
+  ctaHref = "https://www.reservaonline.support/rumbonorte/index.html",
+} = Astro.props;
+---
+
+<section class="py-20 bg-forest-dark relative overflow-hidden">
+  <div
+    class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"
+  >
+  </div>
+  <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+    <h2
+      class="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tighter"
+    >
+      {title}
+    </h2>
+    <a
+      href={ctaHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block bg-primary hover:bg-white text-black font-black text-xl md:text-2xl px-12 py-6 rounded-2xl transition-all transform hover:scale-105 shadow-2xl uppercase tracking-tighter border-b-8 border-black/20"
+    >
+      {ctaText}
+    </a>
+  </div>
+</section>

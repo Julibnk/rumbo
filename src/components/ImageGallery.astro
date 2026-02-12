@@ -1,0 +1,46 @@
+---
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  images: GalleryImage[];
+}
+
+const { title = "Galeria", subtitle, images } = Astro.props;
+---
+
+<section class="py-24 bg-stone-gray clip-slant-top clip-slant-bottom">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-bold uppercase">{title}</h2>
+      {subtitle && <p class="text-gray-500 mt-2">{subtitle}</p>}
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      {
+        images.map((img, i) => (
+          <div
+            class:list={[
+              "overflow-hidden rounded-2xl group relative",
+              i === 0
+                ? "md:col-span-2 md:row-span-2 h-80 md:h-auto"
+                : i === images.length - 1
+                  ? "md:col-span-2 h-64"
+                  : "h-64",
+            ]}
+          >
+            <img
+              alt={img.alt}
+              class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
+              src={img.src}
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+---
+interface Spec {
+  icon: string;
+  label: string;
+  value: string;
+}
+
+interface Props {
+  title?: string;
+  specs: Spec[];
+}
+
+const { title = "Datos tecnicos", specs } = Astro.props;
+---
+
+<div
+  class="bg-white p-8 rounded-2xl border-2 border-primary/20 shadow-xl"
+>
+  <h3 class="text-2xl font-bold mb-8 uppercase tracking-tight">{title}</h3>
+  <div class="grid grid-cols-1 gap-6">
+    {
+      specs.map((spec) => (
+        <div class="flex items-center p-4 bg-background-light rounded-xl">
+          <span class="material-symbols-outlined text-4xl text-primary mr-4">
+            {spec.icon}
+          </span>
+          <div>
+            <p class="text-xs uppercase font-bold text-gray-400">
+              {spec.label}
+            </p>
+            <p class="text-xl font-bold">{spec.value}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>

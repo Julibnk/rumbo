@@ -1,0 +1,33 @@
+---
+interface Shift {
+  name: string;
+  description: string;
+  time: string;
+}
+
+interface Props {
+  title?: string;
+  shifts: Shift[];
+}
+
+const { title = "Horarios", shifts } = Astro.props;
+---
+
+<div>
+  <h2 class="text-3xl font-bold mb-8 uppercase">{title}</h2>
+  <div class="space-y-4">
+    {
+      shifts.map((shift) => (
+        <div class="bg-white border-l-4 border-primary p-6 shadow-md flex justify-between items-center">
+          <div>
+            <h4 class="font-bold text-xl">{shift.name}</h4>
+            <p class="text-gray-500">{shift.description}</p>
+          </div>
+          <span class="bg-forest-dark text-primary px-4 py-2 rounded-lg font-bold whitespace-nowrap">
+            {shift.time}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</div>
