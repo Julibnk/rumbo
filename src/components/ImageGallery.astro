@@ -19,28 +19,165 @@ const { title = "Galeria", subtitle, images } = Astro.props;
       <h2 class="text-5xl font-bold uppercase">{title}</h2>
       {subtitle && <p class="text-gray-500 mt-2">{subtitle}</p>}
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="gallery">
       {
         images.map((img, i) => (
           <div
             class:list={[
-              "overflow-hidden rounded-2xl group relative",
+              "overflow-hidden rounded-2xl group relative cursor-pointer",
               i === 0
                 ? "md:col-span-2 md:row-span-2 h-80 md:h-auto"
                 : i === images.length - 1
                   ? "md:col-span-2 h-64"
                   : "h-64",
             ]}
+            data-lightbox-trigger
+            data-index={i}
           >
             <img
               alt={img.alt}
               class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
               src={img.src}
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="material-icons text-white text-5xl">
+                zoom_in
+              </span>
+            </div>
           </div>
         ))
       }
     </div>
   </div>
+
+  <!-- Lightbox Modal -->
+  <div
+    id="lightbox"
+    class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center"
+  >
+    <!-- Close Button -->
+    <button
+      id="lightbox-close"
+      class="absolute top-4 right-4 text-white hover:text-primary transition-colors z-10"
+      aria-label="Cerrar"
+    >
+      <span class="material-icons text-4xl">close</span>
+    </button>
+
+    <!-- Previous Button -->
+    <button
+      id="lightbox-prev"
+      class="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+      aria-label="Anterior"
+    >
+      <span class="material-icons text-5xl">chevron_left</span>
+    </button>
+
+    <!-- Image Container -->
+    <div class="max-w-7xl max-h-[90vh] px-16">
+      <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        class="max-w-full max-h-[90vh] object-contain"
+      />
+    </div>
+
+    <!-- Next Button -->
+    <button
+      id="lightbox-next"
+      class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+      aria-label="Siguiente"
+    >
+      <span class="material-icons text-5xl">chevron_right</span>
+    </button>
+
+    <!-- Counter -->
+    <div
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-lg font-medium"
+    >
+      <span id="lightbox-current">1</span> / <span id="lightbox-total"
+        >{images.length}</span
+      >
+    </div>
+  </div>
 </section>
+
+<script define:vars={{ images }}>
+  let currentIndex = 0;
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightbox-image");
+  const lightboxCurrent = document.getElementById("lightbox-current");
+  const closeBtn = document.getElementById("lightbox-close");
+  const prevBtn = document.getElementById("lightbox-prev");
+  const nextBtn = document.getElementById("lightbox-next");
+  const triggers = document.querySelectorAll("[data-lightbox-trigger]");
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.remove("hidden");
+    lightbox.classList.add("flex");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add("hidden");
+    lightbox.classList.remove("flex");
+    document.body.style.overflow = "";
+  }
+
+  function updateLightbox() {
+    const img = images[currentIndex];
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+    lightboxCurrent.textContent = currentIndex + 1;
+
+    // Disable prev/next buttons at boundaries
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === images.length - 1;
+  }
+
+  function showNext() {
+    if (currentIndex < images.length - 1) {
+      currentIndex++;
+      updateLightbox();
+    }
+  }
+
+  function showPrev() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateLightbox();
+    }
+  }
+
+  // Event listeners
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const index = parseInt(trigger.dataset.index);
+      openLightbox(index);
+    });
+  });
+
+  closeBtn.addEventListener("click", closeLightbox);
+  prevBtn.addEventListener("click", showPrev);
+  nextBtn.addEventListener("click", showNext);
+
+  // Close on click outside image
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("hidden")) {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
+    }
+  });
+</script>
