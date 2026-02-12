@@ -1,0 +1,86 @@
+---
+interface PricingRow {
+  name: string;
+  details?: string;
+  individual: string;
+  grupo: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  rows: PricingRow[];
+}
+
+const {
+  title = "Tarifas",
+  subtitle,
+  rows,
+} = Astro.props;
+---
+
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="mb-12">
+      <h2 class="text-4xl font-bold uppercase">{title}</h2>
+      <div class="w-20 h-1.5 bg-primary mt-4"></div>
+      {subtitle && (
+        <p class="text-gray-600 mt-4 text-lg">{subtitle}</p>
+      )}
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-forest-dark text-white">
+            <th
+              class="p-6 text-lg uppercase tracking-wider font-bold rounded-tl-xl"
+            >
+              Concepto
+            </th>
+            <th class="p-6 text-lg uppercase tracking-wider font-bold text-right">
+              Individual
+              <span class="block text-xs font-normal text-gray-300 mt-1"
+                >(1-10 personas)</span
+              >
+            </th>
+            <th
+              class="p-6 text-lg uppercase tracking-wider font-bold rounded-tr-xl text-right"
+            >
+              Grupo
+              <span class="block text-xs font-normal text-gray-300 mt-1"
+                >(+11 personas)</span
+              >
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((row, i) => (
+              <tr
+                class:list={[
+                  "border-b border-gray-200",
+                  i % 2 === 1 && "bg-primary/5",
+                ]}
+              >
+                <td class="p-6">
+                  <div class="font-bold text-xl">{row.name}</div>
+                  {row.details && (
+                    <div class="text-gray-500 italic text-sm mt-1">
+                      {row.details}
+                    </div>
+                  )}
+                </td>
+                <td class="p-6 text-right font-bold text-2xl text-primary">
+                  {row.individual}
+                </td>
+                <td class="p-6 text-right font-bold text-2xl text-forest-dark">
+                  {row.grupo}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

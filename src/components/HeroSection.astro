@@ -98,16 +98,31 @@ const {
           style="clip-path: polygon(0 0, 60% 0, 50% 100%, 0% 100%);"
         >
           <div class="w-full max-w-xl">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4 uppercase drop-shadow-xl">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-none tracking-tight mb-6 uppercase drop-shadow-xl">
               <Fragment set:html={title} />
               {titleAccent && (
                 <>
                   <br />
-                  <span class="text-primary italic">{titleAccent}</span>
+                  <span class="text-primary italic relative inline-block mt-2">
+                    {titleAccent}
+                    <svg
+                      class="absolute w-full h-3 -bottom-1 left-0 text-white opacity-80"
+                      fill="none"
+                      viewBox="0 0 200 9"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2.00025 6.99999C18.4924 3.00001 77.5002 -3.49997 198 2.50001"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-width="3"
+                      />
+                    </svg>
+                  </span>
                 </>
               )}
             </h1>
-            <p class="text-lg sm:text-xl text-gray-200 leading-relaxed font-light drop-shadow-lg mb-8">
+            <p class="text-lg sm:text-xl text-gray-200 leading-relaxed font-light drop-shadow-lg mb-6">
               {subtitle}
             </p>
             <a

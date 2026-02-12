@@ -1,0 +1,266 @@
+---
+import Base from "../layouts/Base.astro";
+import HeroSection from "../components/HeroSection.astro";
+import TechSpecs from "../components/TechSpecs.astro";
+import CTABanner from "../components/CTABanner.astro";
+import PricingComparison from "../components/PricingComparison.astro";
+import Schedule from "../components/Schedule.astro";
+import FAQ from "../components/FAQ.astro";
+
+const specs = [
+  { icon: "schedule", label: "Duracion", value: "4 - 4.5 horas" },
+  { icon: "straighten", label: "Distancia", value: "15 km (completa) / 7.5 km (parcial)" },
+  { icon: "signal_cellular_alt", label: "Dificultad", value: "Baja / Para todos" },
+  { icon: "height", label: "Altura minima", value: "1.15 metros" },
+  { icon: "payments", label: "Precio desde", value: "25€ / persona" },
+];
+
+const pricing = [
+  {
+    name: "Adultos",
+    details: "Precio por persona",
+    individual: "35€",
+    grupo: "30€",
+  },
+  {
+    name: "Ninos (menores de 15)",
+    details: "Tarifa reducida para menores",
+    individual: "25€",
+    grupo: "20€",
+  },
+  {
+    name: "Suplemento picnic",
+    details: "Opcional",
+    individual: "+6€",
+    grupo: "+5€",
+  },
+];
+
+const shifts = [
+  {
+    name: "Salidas",
+    description: "Desde las 11:00h hasta la ultima salida",
+    time: "11:00h - 13:00h",
+  },
+  {
+    name: "Fin de actividad",
+    description: "Llegada aproximada",
+    time: "~18:00h",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Cual es la edad minima?",
+    answer:
+      "No hay restriccion de edad; la altura minima es 1.15 metros.",
+  },
+  {
+    question: "Que ropa debo llevar?",
+    answer:
+      "Banador, camiseta de manga corta, calzado apropiado para el agua (no se recomiendan chanclas). Trajes de neopreno disponibles para temperaturas frescas.",
+  },
+  {
+    question: "Puedo llevar a mi perro?",
+    answer:
+      "Si. Proporcionamos chalecos salvavidas para perros. El rio tiene poca profundidad y multiples playas aptas para perros.",
+  },
+  {
+    question: "Que incluye la actividad?",
+    answer:
+      "Todo el material necesario, contenedor estanco, taquillas individuales (segun disponibilidad), traje de neopreno gratuito (bajo peticion), acceso ilimitado a vestuarios y duchas, transporte de vuelta, y seguro de RC y accidentes.",
+  },
+];
+---
+
+<Base
+  title="Descenso del Sella"
+  description="Descenso del Sella en canoa desde Arriondas hasta Ribadesella. 15 km de aventura por el rio mas famoso de Asturias. Desde 25€ por persona."
+>
+  <!-- Hero -->
+  <HeroSection
+    variant="split"
+    title="DESCENSO DEL SELLA:"
+    titleAccent="HASTA 15 KM DE AVENTURA"
+    subtitle="La ruta mas famosa de Asturias: de Arriondas a Ribadesella en canoa."
+    image="https://lh3.googleusercontent.com/aida-public/AB6AXuAClcePJ7LUbyYwnh79wQpKJiSaM13yf79Tn7afyqo8f4X-n7p5hT1c0HmWbdoVts18Yw6VSEhY1N-0OdFGM8wiHvjjdXdDP4GVVCl5moycJFPUJ8zhfRzW5bN8p-99Szhv8ZNoedAibSYPowsLAhJ4Jp0f9WD-gPsqwYLeDQSXVhFU1-LVKyoZG9AjG6JInwtFLoS-q3Qvq-KOdC5ina6Me6Qf_CGk0eko-CGwyj5h2fj2GngMim1wwEn5KRRFinuHB3xUh7UpFg"
+    imageAlt="Canoas en el rio Sella con los Picos de Europa de fondo"
+    ctaText="Reserva tu plaza"
+  />
+
+  <!-- Description + Tech Specs -->
+  <section class="py-24 bg-background-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <div class="lg:col-span-7 space-y-6">
+          <span
+            class="text-primary font-bold tracking-widest uppercase text-sm"
+            >La experiencia</span
+          >
+          <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+            EL RIO MAS <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest-dark"
+            >
+              FAMOSO DE ASTURIAS
+            </span>
+          </h2>
+          <p class="text-xl text-gray-600 font-light leading-relaxed">
+            El descenso del Sella en canoa es la actividad estrella de turismo activo en Asturias, ideal para familias, grupos y aventureros que buscan combinar deporte, naturaleza y diversion. Un recorrido por el rio Sella desde Arriondas hasta Ribadesella que descubre los paisajes fluviales de los Picos de Europa mientras desciendes en canoa.
+          </p>
+          <div class="bg-stone-gray p-6 rounded-xl border-l-4 border-primary">
+            <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+              <span class="material-icons text-primary">pets</span>
+              Pet Friendly
+            </h3>
+            <p class="text-gray-600">
+              Aceptamos perros y proporcionamos chalecos salvavidas para ellos. El rio tiene poca profundidad y multiples playas aptas para perros.
+            </p>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <TechSpecs title="Informacion rapida" specs={specs} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rutas section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-12">
+        <h2 class="text-4xl font-bold uppercase">Rutas disponibles</h2>
+        <div class="w-20 h-1.5 bg-primary mt-4"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-background-light p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-colors">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+              <span class="material-icons text-primary text-2xl">route</span>
+            </div>
+            <h3 class="text-2xl font-bold">Ruta Completa</h3>
+          </div>
+          <p class="text-gray-600 mb-4">15 km finalizando en Llovio (cerca de Ribadesella)</p>
+          <div class="flex items-center gap-2 text-sm font-bold text-primary">
+            <span class="material-icons text-sm">schedule</span>
+            4 - 4.5 horas aproximadamente
+          </div>
+        </div>
+        <div class="bg-background-light p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-colors">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+              <span class="material-icons text-primary text-2xl">hiking</span>
+            </div>
+            <h3 class="text-2xl font-bold">Ruta Parcial</h3>
+          </div>
+          <p class="text-gray-600 mb-4">7.5 km con punto de recogida a mitad de recorrido</p>
+          <div class="flex items-center gap-2 text-sm font-bold text-primary">
+            <span class="material-icons text-sm">schedule</span>
+            Aproximadamente 2 horas
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner
+    title="LISTO PARA LA AVENTURA?"
+    ctaText="Reserva tu descenso"
+  />
+
+  <!-- Pricing -->
+  <PricingComparison
+    title="Tarifas"
+    subtitle="Precios especiales para grupos de mas de 11 personas"
+    rows={pricing}
+  />
+
+  <!-- Proceso paso a paso -->
+  <section class="py-24 bg-stone-gray">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold uppercase mb-4">Como funciona</h2>
+        <p class="text-gray-600">Proceso paso a paso de tu aventura</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-xl text-center">
+          <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="material-icons text-primary text-3xl">login</span>
+          </div>
+          <h3 class="font-bold text-xl mb-2">1. Llegada</h3>
+          <p class="text-gray-600 text-sm">Ponerse ropa de bano; recibir equipo y taquilla</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl text-center">
+          <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="material-icons text-primary text-3xl">info</span>
+          </div>
+          <h3 class="font-bold text-xl mb-2">2. Briefing</h3>
+          <p class="text-gray-600 text-sm">El monitor da instrucciones de seguridad en el agua</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl text-center">
+          <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="material-icons text-primary text-3xl">kayaking</span>
+          </div>
+          <h3 class="font-bold text-xl mb-2">3. Aventura</h3>
+          <p class="text-gray-600 text-sm">Elegir ruta completa (15 km) o parcial (7.5 km)</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl text-center">
+          <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="material-icons text-primary text-3xl">home</span>
+          </div>
+          <h3 class="font-bold text-xl mb-2">4. Regreso</h3>
+          <p class="text-gray-600 text-sm">Transporte de vuelta; duchas disponibles</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Que incluye -->
+  <section class="py-20 bg-background-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-12">
+        <h2 class="text-4xl font-bold uppercase">Que incluye</h2>
+        <div class="w-20 h-1.5 bg-primary mt-4"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg">
+          <span class="material-icons text-primary">check_circle</span>
+          <span class="font-medium">Todo el material necesario</span>
+        </div>
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg">
+          <span class="material-icons text-primary">check_circle</span>
+          <span class="font-medium">Contenedor estanco</span>
+        </div>
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg">
+          <span class="material-icons text-primary">check_circle</span>
+          <span class="font-medium">Taquillas individuales</span>
+        </div>
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg">
+          <span class="material-icons text-primary">check_circle</span>
+          <span class="font-medium">Traje de neopreno gratuito</span>
+        </div>
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg">
+          <span class="material-icons text-primary">check_circle</span>
+          <span class="font-medium">Vestuarios y duchas</span>
+        </div>
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg">
+          <span class="material-icons text-primary">check_circle</span>
+          <span class="font-medium">Transporte de vuelta</span>
+        </div>
+        <div class="flex items-center gap-3 bg-white p-4 rounded-lg col-span-full lg:col-span-3">
+          <span class="material-icons text-primary">check_circle</span>
+          <span class="font-medium">Seguro de Responsabilidad Civil y Accidentes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule + FAQ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16">
+      <Schedule title="Horarios" shifts={shifts} />
+      <FAQ title="Preguntas frecuentes" items={faqItems} />
+    </div>
+  </section>
+</Base>
