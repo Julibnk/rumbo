@@ -10,8 +10,9 @@ import FAQ from "../components/FAQ.astro";
 
 const specs = [
   { icon: "schedule", label: "Duracion", value: "Aprox. 4 horas" },
-  { icon: "signal_cellular_alt", label: "Dificultad", value: "Media / Fisica" },
-  { icon: "person_add", label: "Edad minima", value: "12 anos" },
+  { icon: "signal_cellular_alt", label: "Niveles", value: "4 niveles de dificultad" },
+  { icon: "person_add", label: "Edad minima", value: "A partir de 6 anos" },
+  { icon: "payments", label: "Precio desde", value: "45€ / persona" },
 ];
 
 const pricing = [
@@ -99,6 +100,7 @@ const faqItems = [
 >
   <!-- Hero -->
   <HeroSection
+    variant="split"
     title="BARRANQUISMO:"
     titleAccent="DIVERSION EN ESTADO PURO"
     subtitle="Salta a lo desconocido. Desciende cascadas verticales y nada por corredores de piedra caliza milenarios."
@@ -132,14 +134,14 @@ const faqItems = [
             abierto entre las montanas: saltos a pozas, toboganes, pequenos
             destrepes o rappel.
           </p>
-          <p class="text-lg text-gray-500 font-light">
+          <p class="text-lg text-gray-600 italic border-l-4 border-primary pl-4 mt-6">
             En Rumbo Norte hemos creado distintos niveles con dificultades
             progresivas para que nadie se quede sin disfrutar de esta apasionante
             actividad.
           </p>
         </div>
         <div class="lg:col-span-5">
-          <TechSpecs specs={specs} />
+          <TechSpecs title="Informacion rapida" specs={specs} />
         </div>
       </div>
     </div>

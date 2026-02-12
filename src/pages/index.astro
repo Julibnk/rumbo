@@ -1,15 +1,34 @@
 ---
 import Base from "../layouts/Base.astro";
+import HeroSection from "../components/HeroSection.astro";
 ---
 
 <Base title="Inicio">
-  <section class="py-32 text-center">
-    <h1 class="text-5xl md:text-7xl font-bold uppercase tracking-tighter">
-      Rumbo hacia <br />
-      <span class="text-primary">experiencias inolvidables</span>
-    </h1>
-    <p class="mt-6 text-xl text-gray-500 max-w-2xl mx-auto">
-      Contenido en construccion.
-    </p>
+  <!-- Hero -->
+  <HeroSection
+    title="RUMBO HACIA"
+    titleAccent="EXPERIENCIAS INOLVIDABLES"
+    subtitle="Turismo activo en el corazon de Asturias"
+    image="https://lh3.googleusercontent.com/aida-public/AB6AXuCHo8H1YDDwVY_nHJkFtZ53bFQQpLxkrW92Y2pGZUpGCnffoA9yJSLdHeZmwzdciywYZ-dnUaZuxzLGj6V_Eifq1oIEvEX4oaGTY4Z93IsOeDhETmFupB03ptakbfIcOWN7A3zujNp2lDN3c58WABsY0H-FcyhZMhh_snIIfBLS3Kmnk7JYEg7ZXIzJnCxmnMs8GssiiosuGOYv5rZXvUrwa4XNndWz6RfNCQU6iWBRK2hFWN-MLFYuSEJpzvzCdPPLAT2suj8f-g"
+    imageAlt="Descenso del Sella en canoa rodeado de naturaleza asturiana"
+    ctaText="Reserva ya!"
+  />
+
+  <!-- Intro section -->
+  <section class="py-20 bg-background-light">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-xl md:text-2xl text-gray-700 font-light leading-relaxed">
+        Ven a disfrutar con nosotros del emocionante descenso del Sella en canoa con Rumbo Norte Asturias! Pasa un dia inolvidable realizando nuestras actividades, rodeado de un entorno incomparable y con todas las comodidades. Te garantizamos una experiencia llena de diversion y aventura mientras exploras las aguas del Sella.
+      </p>
+    </div>
+  </section>
+
+  <!-- Placeholder para resto de secciones -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-xl text-gray-500">
+        Resto de contenido en construccion...
+      </p>
+    </div>
   </section>
 </Base>

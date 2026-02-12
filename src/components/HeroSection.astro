@@ -8,6 +8,7 @@ interface Props {
   imageAlt: string;
   ctaText?: string;
   ctaHref?: string;
+  variant?: "fullscreen" | "split";
 }
 
 const {
@@ -19,73 +20,96 @@ const {
   imageAlt,
   ctaText = "Reserva ya!",
   ctaHref = "https://www.reservaonline.support/rumbonorte/index.html",
+  variant = "fullscreen",
 } = Astro.props;
 ---
 
-<header
-  class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden clip-slant-bottom -mt-20"
->
-  <div class="absolute inset-0 z-0">
-    <img
-      alt={imageAlt}
-      class="w-full h-full object-cover brightness-[0.7] contrast-125"
-      src={image}
-    />
-  </div>
-  <div
-    class="absolute inset-0 z-10 bg-forest-dark/40 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"
-  >
-  </div>
-  <div class="relative z-20 container mx-auto px-4 text-center">
-    {
-      badge && (
-        <div class="inline-block mb-4 px-4 py-1 bg-primary text-black font-bold text-xs uppercase tracking-[0.2em] rounded-full rotate-2 transform border-2 border-black">
-          {badge}
+{
+  variant === "fullscreen" ? (
+    <header class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden clip-slant-bottom -mt-20">
+      <div class="absolute inset-0 z-0">
+        <img
+          alt={imageAlt}
+          class="w-full h-full object-cover brightness-[0.7] contrast-125"
+          src={image}
+        />
+      </div>
+      <div class="absolute inset-0 z-10 bg-forest-dark/40 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30" />
+      <div class="relative z-20 container mx-auto px-4 text-center">
+        {badge && (
+          <div class="inline-block mb-4 px-4 py-1 bg-primary text-black font-bold text-xs uppercase tracking-[0.2em] rounded-full rotate-2 transform border-2 border-black">
+            {badge}
+          </div>
+        )}
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-tighter mb-6 drop-shadow-2xl uppercase">
+          <Fragment set:html={title} />
+          {titleAccent && (
+            <>
+              <br />
+              <span class="text-primary italic relative inline-block">
+                {titleAccent}
+                <svg
+                  class="absolute w-full h-3 -bottom-1 left-0 text-white opacity-80"
+                  fill="none"
+                  viewBox="0 0 200 9"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.00025 6.99999C18.4924 3.00001 77.5002 -3.49997 198 2.50001"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-width="3"
+                  />
+                </svg>
+              </span>
+            </>
+          )}
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto mb-10 font-medium">
+          {subtitle}
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href={ctaHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-primary hover:bg-white text-black font-bold text-lg px-10 py-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(34,81,51,1)] hover:shadow-[2px_2px_0px_0px_rgba(34,81,51,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all border-2 border-black uppercase tracking-widest"
+          >
+            {ctaText}
+          </a>
         </div>
-      )
-    }
-    <h1
-      class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-tighter mb-6 drop-shadow-2xl uppercase"
-    >
-      <Fragment set:html={title} />
-      {
-        titleAccent && (
-          <>
-            <br />
-            <span class="text-primary italic relative inline-block">
-              {titleAccent}
-              <svg
-                class="absolute w-full h-3 -bottom-1 left-0 text-white opacity-80"
-                fill="none"
-                viewBox="0 0 200 9"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2.00025 6.99999C18.4924 3.00001 77.5002 -3.49997 198 2.50001"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-width="3"
-                />
-              </svg>
-            </span>
-          </>
-        )
-      }
-    </h1>
-    <p
-      class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto mb-10 font-medium"
-    >
-      {subtitle}
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
-      <a
-        href={ctaHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bg-primary hover:bg-white text-black font-bold text-lg px-10 py-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(34,81,51,1)] hover:shadow-[2px_2px_0px_0px_rgba(34,81,51,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all border-2 border-black uppercase tracking-widest"
-      >
-        {ctaText}
-      </a>
-    </div>
-  </div>
-</header>
+      </div>
+    </header>
+  ) : (
+    <header class="relative min-h-[600px] lg:min-h-[500px] flex items-center -mt-20 overflow-hidden">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 relative">
+        {/* Left: Text content on dark background */}
+        <div class="bg-forest-dark py-24 lg:py-32 px-6 sm:px-12 lg:px-16 flex items-center relative z-10">
+          <div class="w-full max-w-xl">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-4 uppercase">
+              <Fragment set:html={title} />
+              {titleAccent && (
+                <>
+                  <br />
+                  <span class="text-primary italic">{titleAccent}</span>
+                </>
+              )}
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-300 leading-relaxed font-light">
+              {subtitle}
+            </p>
+          </div>
+        </div>
+
+        {/* Right: Image with clip-path */}
+        <div class="relative h-64 lg:h-auto" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%);">
+          <img
+            alt={imageAlt}
+            class="absolute inset-0 w-full h-full object-cover"
+            src={image}
+          />
+        </div>
+      </div>
+    </header>
+  )
+}
