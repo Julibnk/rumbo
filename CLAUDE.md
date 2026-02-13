@@ -20,6 +20,21 @@ El fichero contiene el scraping completo del sitio actual (WordPress + Elementor
 
 ---
 
+## Documentos de estrategia y planificacion
+
+| Documento | Ruta | Descripcion |
+|-----------|------|-------------|
+| Plan UX | `mejoras-ux.md` | Plan completo de reorganizacion UX: nueva estructura de paginas, navegacion, capa de datos centralizada, estrategia de CTAs, homepage rediseñada (8 secciones), y secuencia de implementacion por fases |
+| Informe SEO | `informe-seo.md` | Guia completa de SEO para developers: keywords objetivo, estructura de URLs, meta tags, JSON-LD schema, rendimiento, y recomendaciones especificas para negocio local de turismo activo |
+| Plan animaciones | `animaciones.md` | Plan de animaciones sutiles: scroll animations con Intersection Observer, hover effects, accordion, y filosofia de movimiento coherente con el estilo brutalist |
+
+**Consultar estos documentos antes de:**
+- Crear paginas nuevas o reestructurar la navegacion → `mejoras-ux.md`
+- Implementar meta tags, schema, sitemap o cualquier optimizacion para buscadores → `informe-seo.md`
+- Anadir o modificar animaciones/transiciones → `animaciones.md`
+
+---
+
 ## Stack tecnologico
 
 - **Framework**: Astro 5.17.1 (static-first, zero JS por defecto)
@@ -87,7 +102,7 @@ design/
 - `/visita-lagos` - Completa con hero split (right), TechSpecs, 4 feature cards, PricingTable (adultos/ninos), "que llevar" (4 items), Schedule
 
 ### Paginas parciales
-- `/` (index) - Solo tiene hero con video de fondo. Necesita reconstruccion completa con 8 secciones (ver plan en `design/mejoras-ux.md`)
+- `/` (index) - Solo tiene hero con video de fondo. Necesita reconstruccion completa con 8 secciones (ver plan en `mejoras-ux.md`)
 
 ### Paginas pendientes (segun plan en mejoras-ux.md)
 - `/packs` - Packs con calculo de ahorro visible
@@ -249,7 +264,7 @@ Referencia visual en `design/code.html` y `design/screenshots/`.
 
 ## Deuda tecnica y mejoras pendientes
 
-### Arquitectura (plan completo en `design/mejoras-ux.md`)
+### Arquitectura (plan completo en `mejoras-ux.md`)
 1. **Booking URL duplicada** en Header, HeroSection, CTABanner, BookingFAB, y paginas → Centralizar en `src/data/empresa.ts`
 2. **Datos hardcodeados** en cada pagina → Crear capa `src/data/` con TypeScript como single source of truth
 3. **Navegacion** necesita refactor: eliminar dropdown "Grupos", anadir pagina `/nosotros`
