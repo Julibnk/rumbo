@@ -10,6 +10,7 @@ interface Props {
   ctaText?: string;
   ctaHref?: string;
   variant?: "fullscreen" | "split";
+  splitPosition?: "left" | "right";
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   ctaText = "Reserva ya!",
   ctaHref = "https://www.reservaonline.support/rumbonorte/index.html",
   variant = "fullscreen",
+  splitPosition = "left",
 } = Astro.props;
 ---
 
@@ -116,10 +118,18 @@ const {
       {/* Diagonal overlay with text */}
       <div class="absolute inset-0 z-10 pt-20">
         <div
-          class="bg-forest-dark/75 backdrop-blur-md h-full flex items-center px-6 sm:px-12 lg:px-16 pb-16"
-          style="clip-path: polygon(0 0, 60% 0, 50% 100%, 0% 100%);"
+          class:list={[
+            "bg-forest-dark/75 backdrop-blur-md h-full flex items-center px-6 sm:px-12 lg:px-16 pb-16",
+            splitPosition === "right" && "justify-end"
+          ]}
+          style={splitPosition === "left"
+            ? "clip-path: polygon(0 0, 60% 0, 50% 100%, 0% 100%);"
+            : "clip-path: polygon(50% 0, 100% 0, 100% 100%, 40% 100%);"}
         >
-          <div class="w-full max-w-xl">
+          <div class:list={[
+            "w-full max-w-xl",
+            splitPosition === "right" && "text-right"
+          ]}>
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-none tracking-tight mb-6 uppercase drop-shadow-xl">
               <Fragment set:html={title} />
               {titleAccent && (
