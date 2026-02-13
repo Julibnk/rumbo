@@ -1,0 +1,286 @@
+---
+import Base from "../layouts/Base.astro";
+import HeroSection from "../components/HeroSection.astro";
+
+import contactoImg from "../assets/images/varios/contacto.webp";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Base
+  title="Contacto"
+  description="Contacta con Rumbo Norte Asturias. Telefono, email y formulario de presupuesto. Estamos en Arriondas, Asturias."
+>
+  <!-- Hero -->
+  <HeroSection
+    variant="split"
+    splitPosition="right"
+    title="CONTACTA"
+    titleAccent="CON NOSOTROS"
+    subtitle="Tienes dudas o quieres un presupuesto? Estamos aqui para ayudarte."
+    image={contactoImg.src}
+    imageAlt="Instalaciones de Rumbo Norte Asturias en Arriondas"
+    ctaText="Llamanos"
+    ctaHref="tel:+34648951599"
+  />
+
+  <!-- Contacto + Formulario -->
+  <section class="py-24 bg-background-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+        <!-- Datos de contacto -->
+        <div class="space-y-8">
+          <div>
+            <span class="text-primary font-bold tracking-widest uppercase text-sm">
+              Donde estamos
+            </span>
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight mt-3">
+              VEN A <br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest-dark">
+                VERNOS
+              </span>
+            </h2>
+            <p class="text-xl text-gray-600 font-light leading-relaxed mt-4">
+              Nuestra base esta en Arriondas, la puerta de entrada a los Picos de Europa.
+            </p>
+          </div>
+
+          <div class="space-y-5">
+            <a
+              href="tel:+34648951599"
+              class="flex items-center gap-4 group"
+            >
+              <span class="w-12 h-12 rounded-xl bg-background-light border border-gray-200 flex items-center justify-center shrink-0 group-hover:border-primary/40 transition-colors">
+                <span class="material-icons text-gray-500 group-hover:text-primary transition-colors">phone</span>
+              </span>
+              <div>
+                <span class="text-sm text-gray-400 font-medium uppercase tracking-wider">Telefono</span>
+                <span class="block text-gray-800 font-bold">648 951 599 / 985 840 693</span>
+              </div>
+            </a>
+
+            <a
+              href="mailto:info@rumbonorteasturias.com"
+              class="flex items-center gap-4 group"
+            >
+              <span class="w-12 h-12 rounded-xl bg-background-light border border-gray-200 flex items-center justify-center shrink-0 group-hover:border-primary/40 transition-colors">
+                <span class="material-icons text-gray-500 group-hover:text-primary transition-colors">email</span>
+              </span>
+              <div>
+                <span class="text-sm text-gray-400 font-medium uppercase tracking-wider">Email</span>
+                <span class="block text-gray-800 font-bold">info@rumbonorteasturias.com</span>
+              </div>
+            </a>
+
+            <a
+              href="https://maps.google.com/?q=43.391094,-5.185168"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-4 group"
+            >
+              <span class="w-12 h-12 rounded-xl bg-background-light border border-gray-200 flex items-center justify-center shrink-0 group-hover:border-primary/40 transition-colors">
+                <span class="material-icons text-gray-500 group-hover:text-primary transition-colors">place</span>
+              </span>
+              <div>
+                <span class="text-sm text-gray-400 font-medium uppercase tracking-wider">Direccion</span>
+                <span class="block text-gray-800 font-bold">C/ Inocencio del Valle 3, 33540 Arriondas</span>
+              </div>
+            </a>
+
+            <div class="flex items-center gap-4">
+              <span class="w-12 h-12 rounded-xl bg-background-light border border-gray-200 flex items-center justify-center shrink-0">
+                <span class="material-icons text-gray-500">schedule</span>
+              </span>
+              <div>
+                <span class="text-sm text-gray-400 font-medium uppercase tracking-wider">Horario</span>
+                <span class="block text-gray-800 font-bold">Abril - Octubre, todos los dias</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario de presupuesto -->
+        <div>
+          <div class="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 md:p-10">
+            <h3 class="text-2xl font-bold mb-2">Pide tu presupuesto</h3>
+            <p class="text-gray-500 text-sm mb-8">
+              Rellena el formulario y te respondemos en menos de 24 horas.
+            </p>
+
+            <form id="contact-form" class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="nombre" class="block text-sm font-bold text-gray-700 mb-1.5">Nombre</label>
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    required
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-background-light text-gray-800 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                    placeholder="Tu nombre"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-bold text-gray-700 mb-1.5">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-background-light text-gray-800 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                    placeholder="tu@email.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="telefono" class="block text-sm font-bold text-gray-700 mb-1.5">Telefono <span class="text-gray-400 font-normal">(opcional)</span></label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-background-light text-gray-800 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                  placeholder="+34 600 000 000"
+                />
+              </div>
+
+              <div>
+                <label for="actividad" class="block text-sm font-bold text-gray-700 mb-1.5">Actividad de interes</label>
+                <select
+                  id="actividad"
+                  name="actividad"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-background-light text-gray-800 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                >
+                  <option value="">Selecciona una opcion</option>
+                  <option value="sella">Descenso del Sella</option>
+                  <option value="barranquismo">Barranquismo</option>
+                  <option value="lagos">Lagos de Covadonga</option>
+                  <option value="grupo">Descenso en grupo</option>
+                  <option value="viajes">Viaje de estudios</option>
+                  <option value="pack">Packs de actividades</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="personas" class="block text-sm font-bold text-gray-700 mb-1.5">Num. personas <span class="text-gray-400 font-normal">(aprox.)</span></label>
+                  <input
+                    type="number"
+                    id="personas"
+                    name="personas"
+                    min="1"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-background-light text-gray-800 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                    placeholder="4"
+                  />
+                </div>
+                <div>
+                  <label for="fecha" class="block text-sm font-bold text-gray-700 mb-1.5">Fecha deseada <span class="text-gray-400 font-normal">(aprox.)</span></label>
+                  <input
+                    type="date"
+                    id="fecha"
+                    name="fecha"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-background-light text-gray-800 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="mensaje" class="block text-sm font-bold text-gray-700 mb-1.5">Mensaje</label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  rows="4"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-background-light text-gray-800 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"
+                  placeholder="Cuentanos lo que necesitas..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-gray-900 hover:bg-primary text-white hover:text-black font-bold py-4 rounded-xl border-2 border-gray-900 hover:border-black uppercase tracking-widest transition-all hover:-translate-y-0.5"
+              >
+                Enviar mensaje
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mapa -->
+  <section class="relative">
+    <div id="contact-map" class="w-full h-[400px] lg:h-[450px]"></div>
+  </section>
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+      var mapEl = document.getElementById("contact-map");
+      if (!mapEl) return;
+
+      var map = L.map(mapEl, {
+        center: [43.391094, -5.185168],
+        zoom: 14,
+        scrollWheelZoom: false,
+        attributionControl: false,
+      });
+
+      L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          maxZoom: 19,
+          attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
+        }
+      ).addTo(map);
+
+      var markerIcon = L.divIcon({
+        html: '<div style="width:20px;height:20px;background:#8cb950;border:3px solid white;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.3);"></div>',
+        iconSize: [20, 20],
+        iconAnchor: [10, 10],
+        className: "",
+      });
+
+      L.marker([43.391094, -5.185168], { icon: markerIcon })
+        .addTo(map)
+        .bindPopup("<strong>Rumbo Norte Asturias</strong><br>C/ Inocencio del Valle 3<br>33540 Arriondas");
+
+      map.on("click", function () {
+        map.scrollWheelZoom.enable();
+      });
+    });
+
+    // Form mailto fallback
+    document.getElementById("contact-form")?.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = e.target;
+      var nombre = f.nombre.value;
+      var email = f.email.value;
+      var telefono = f.telefono.value;
+      var actividad = f.actividad.options[f.actividad.selectedIndex].text;
+      var personas = f.personas.value;
+      var fecha = f.fecha.value;
+      var mensaje = f.mensaje.value;
+
+      var body = "Nombre: " + nombre + "\n";
+      body += "Email: " + email + "\n";
+      if (telefono) body += "Telefono: " + telefono + "\n";
+      if (actividad && actividad !== "Selecciona una opcion") body += "Actividad: " + actividad + "\n";
+      if (personas) body += "Personas: " + personas + "\n";
+      if (fecha) body += "Fecha: " + fecha + "\n";
+      if (mensaje) body += "\n" + mensaje;
+
+      var subject = "Solicitud de presupuesto - " + (actividad !== "Selecciona una opcion" ? actividad : "General");
+      window.location.href = "mailto:info@rumbonorteasturias.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+  </script>
+</Base>

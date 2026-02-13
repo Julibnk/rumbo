@@ -5,16 +5,14 @@ const navLinks = [
   { label: "Descenso del Sella", href: `${base}/descenso-del-sella` },
   { label: "Lagos de Covadonga", href: `${base}/visita-lagos` },
   { label: "Barranquismo", href: `${base}/barranquismo` },
-];
-
-const groupLinks = [
-  { label: "Descenso en Grupo", href: `${base}/descenso-en-grupo` },
-  { label: "Viajes de Estudios", href: `${base}/viajes-de-estudios` },
+  { label: "Grupos", href: `${base}/grupos` },
 ];
 
 const aboutLinks = [
+  { label: "Quienes Somos", href: `${base}/nosotros` },
+  { label: "#RiosLimpios", href: `${base}/iniciativa-rioslimpios` },
   { label: "Contacto", href: `${base}/contacto` },
-  { label: "Novedades", href: `${base}/novedades` },
+  { label: "Blog", href: `${base}/novedades` },
 ];
 
 const bookingUrl = "https://www.reservaonline.support/rumbonorte/index.html";
@@ -22,7 +20,6 @@ const bookingUrl = "https://www.reservaonline.support/rumbonorte/index.html";
 const normalize = (path: string) => path.replace(/\/$/, '') || '/';
 const currentPath = normalize(Astro.url.pathname);
 const isActive = (href: string) => currentPath === normalize(href);
-const isGroupActive = groupLinks.some((l) => isActive(l.href));
 const isAboutActive = aboutLinks.some((l) => isActive(l.href));
 ---
 
@@ -59,45 +56,6 @@ const isAboutActive = aboutLinks.some((l) => isActive(l.href));
             </a>
           ))
         }
-
-        <!-- Dropdown: Grupos -->
-        <div class="relative group/dropdown">
-          <button
-            class:list={[
-              "text-sm font-bold uppercase tracking-widest transition-colors flex items-center gap-1",
-              isGroupActive ? "text-primary" : "hover:text-primary",
-            ]}
-          >
-            Grupos
-            <span class="material-icons text-sm transition-transform group-hover/dropdown:rotate-180"
-              >expand_more</span
-            >
-          </button>
-          <div
-            class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-200"
-          >
-            <div
-              class="bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-[200px]"
-            >
-              {
-                groupLinks.map((link) => (
-                  <a
-                    href={link.href}
-                    class:list={[
-                      "block px-4 py-2 text-sm font-medium transition-colors",
-                      isActive(link.href)
-                        ? "text-primary bg-primary/10"
-                        : "hover:bg-primary/10 hover:text-primary",
-                    ]}
-                    aria-current={isActive(link.href) ? "page" : undefined}
-                  >
-                    {link.label}
-                  </a>
-                ))
-              }
-            </div>
-          </div>
-        </div>
 
         <!-- Dropdown: Nosotros -->
         <div class="relative group/dropdown2">
@@ -172,26 +130,6 @@ const isAboutActive = aboutLinks.some((l) => isActive(l.href));
             href={link.href}
             class:list={[
               "block py-3 text-sm font-bold uppercase tracking-widest transition-colors border-b border-gray-100",
-              isActive(link.href) ? "text-primary" : "hover:text-primary",
-            ]}
-            aria-current={isActive(link.href) ? "page" : undefined}
-          >
-            {link.label}
-          </a>
-        ))
-      }
-
-      <div class="pt-2 pb-1">
-        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest"
-          >Grupos</span
-        >
-      </div>
-      {
-        groupLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              "block py-3 pl-4 text-sm font-bold uppercase tracking-widest transition-colors border-b border-gray-100",
               isActive(link.href) ? "text-primary" : "hover:text-primary",
             ]}
             aria-current={isActive(link.href) ? "page" : undefined}
