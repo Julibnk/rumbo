@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import HeroSection from "../components/HeroSection.astro";
+import Map from "../components/Map.astro";
 import { Image } from "astro:assets";
 
 import sellaImg from "../assets/images/actividades/descenso-sella-hero.webp";
@@ -73,7 +74,7 @@ const actividades = [
   <!-- Elige tu aventura -->
   <section class="py-24 md:py-32 bg-stone-gray relative overflow-hidden">
     <!-- Textura de fondo sutil -->
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[url('/textures/stardust.png')] opacity-10 pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 relative z-10">
       <!-- Encabezado -->
@@ -390,7 +391,7 @@ const actividades = [
 
   <!-- #RiosLimpios -->
   <section class="py-20 bg-forest-dark relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
+    <div class="absolute inset-0 bg-[url('/textures/stardust.png')] opacity-10"></div>
     <div class="max-w-7xl mx-auto px-4 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="space-y-6">
@@ -445,7 +446,7 @@ const actividades = [
 
   <!-- Encuentranos -->
   <section class="py-24 md:py-32 bg-primary relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[url('/textures/stardust.png')] opacity-10 pointer-events-none"></div>
 
     <div class="max-w-6xl mx-auto px-4 relative z-10">
       <div
@@ -512,54 +513,10 @@ const actividades = [
 
           <!-- Mapa -->
           <div class="lg:col-span-7 min-h-[350px] lg:min-h-[450px] relative">
-            <div id="find-us-map" class="w-full h-full absolute inset-0"></div>
+            <Map id="find-us-map" zoom={12} class="w-full h-full absolute inset-0" />
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Leaflet -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
-  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", function () {
-      var mapEl = document.getElementById("find-us-map");
-      if (!mapEl) return;
-
-      var map = L.map(mapEl, {
-        center: [43.391094, -5.185168],
-        zoom: 12,
-        scrollWheelZoom: false,
-        attributionControl: false,
-      });
-
-      L.tileLayer(
-        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        {
-          maxZoom: 19,
-          attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
-        }
-      ).addTo(map);
-
-      var markerIcon = L.divIcon({
-        html: '<div style="width:20px;height:20px;background:#8cb950;border:3px solid white;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.3);"></div>',
-        iconSize: [20, 20],
-        iconAnchor: [10, 10],
-        className: "",
-      });
-
-      L.marker([43.391094, -5.185168], { icon: markerIcon }).addTo(map);
-
-      // Habilitar scroll zoom solo tras click en el mapa
-      map.on("click", function () {
-        map.scrollWheelZoom.enable();
-      });
-    });
-  </script>
 </Base>

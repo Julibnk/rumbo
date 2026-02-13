@@ -61,7 +61,7 @@ src/
     visita-lagos.astro        # COMPLETA - hero split (right), specs, features, pricing simple, FAQ
     grupos.astro              # COMPLETA - hero split, specs, viajes de estudios, tipos de grupo, pricing, FAQ
     contacto.astro            # COMPLETA - hero split (right), datos contacto, formulario presupuesto, mapa Leaflet
-  components/                 # 13 componentes
+  components/                 # 14 componentes
     Header.astro              # Navbar fija con blur, dropdowns, menu movil hamburguesa
     Footer.astro              # Badges confianza + info empresa + links + legal
     HeroSection.astro         # 2 variantes: fullscreen (home) y split diagonal (actividades)
@@ -73,6 +73,7 @@ src/
     FAQ.astro                 # Accordion colapsable con animacion suave
     ImageCarousel.astro       # Carrusel 3D con efecto polaroid, swipe, teclado
     ImageGallery.astro        # Grid masonry con lightbox (CREADO pero NO USADO en ninguna pagina)
+    Map.astro                 # Mapa Leaflet reutilizable (props: id, zoom, popup, class)
     WhatsAppFAB.astro         # FAB flotante WhatsApp (activo en todas las paginas)
     BookingFAB.astro          # FAB de reserva alternativo (CREADO pero NO USADO)
   scripts/
@@ -88,6 +89,7 @@ public/
   favicon.ico
   favicon.svg
   branding/                   # logo-rios-limpios.png (usado desde public/ en homepage)
+  textures/                   # stardust.png (textura overlay para secciones dark)
 design/
   contenido.md               # FUENTE DE VERDAD del contenido textual (421 lineas)
   code.html                   # Referencia visual del diseno (HTML/CSS)
@@ -182,6 +184,11 @@ Props: `title`, `subtitle`, `images[]`
 Props: `title`, `ctaText`, `ctaHref?`
 - Seccion dark full-width con textura stardust overlay
 
+### Map
+Props: `id`, `zoom?` (default 12), `popup?` (HTML string para bindPopup), `class?`
+- Mapa Leaflet con OpenStreetMap tiles, marcador custom en primary, scroll zoom tras click
+- Usado en homepage (zoom 12, sin popup) y contacto (zoom 14, con popup de direccion)
+
 ### WhatsAppFAB
 Sin props. Hardcoded: numero, mensaje, animacion de entrada + pulso
 
@@ -253,16 +260,14 @@ Homepage usa: `stone-gray` → `bg-white` → `bg-forest-dark` → `bg-primary` 
 
 ### Textura stardust overlay
 
-Se usa una textura como overlay decorativo en secciones dark y destacadas:
+Se usa una textura local como overlay decorativo en secciones dark y destacadas:
 ```html
-<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none"></div>
+<div class="absolute inset-0 bg-[url('/textures/stardust.png')] opacity-10 pointer-events-none"></div>
 ```
 - Secciones `bg-forest-dark`: `opacity-10` (CTA Banner, Coastering, #RiosLimpios)
 - Secciones `bg-stone-gray`: `opacity-10` (Elige tu aventura)
 - Secciones `bg-primary`: `opacity-10` (Encuentranos)
 - Hero fullscreen: `opacity-30`
-
-**Nota**: URL externa, dependencia fragil. Considerar descargar como asset local.
 
 ### Tipografia
 
@@ -476,17 +481,14 @@ En hero: anade `rotate-2 transform` y `px-4`
 4. **Badges de confianza** en footer → Mover a seccion dedicada en homepage y /nosotros
 5. **Content Collections** no configuradas → Necesarias para blog
 
-### Dependencias externas fragiles
-- **Textura stardust**: `https://www.transparenttextures.com/patterns/stardust.png` → Descargar como asset local
+### Dependencias externas pendientes
 - **Hero homepage**: imagen de Google `lh3.googleusercontent.com` + video de WordPress `rumbonorteasturias.com`
 - **Coastering img**: imagen de Google `lh3.googleusercontent.com`
 - **Leaflet**: CDN `unpkg.com/leaflet@1.9.4` (CSS + JS) → Considerar instalar via npm
 - **Google Fonts**: CDN para Space Grotesk y Material Symbols → Considerar self-hosting
 
-### Inconsistencias detectadas
-- **Scroll animations**: Lagos tiene muchas menos animaciones que otras paginas (solo TechSpecs). Las feature cards y "que llevar" no usan `scroll-animate`
+### Inconsistencias pendientes
 - **Astro `<Image>` vs `<img>`**: Solo homepage polaroids y grupos viajes usan `<Image>` optimizado. El resto usa `<img>` sin optimizar
-- **Codigo Leaflet duplicado**: Mismo codigo de mapa copy-paste en homepage y contacto → Extraer componente `Map.astro`
 
 ### Funcionalidades pendientes
 - Homepage: faltan secciones de testimonios, CTA final (de las 8 planeadas en mejoras-ux.md)
@@ -503,4 +505,3 @@ En hero: anade `rotate-2 transform` y `px-4`
 - `Testimonials.astro` + `TestimonialCard.astro` - Reviews
 - `PackCard.astro` - Card de pack con ahorro calculado
 - `ProcessSteps.astro` - Proceso paso a paso (actualmente inline en sella)
-- `Map.astro` - Mapa Leaflet reutilizable (actualmente duplicado en homepage + contacto)
