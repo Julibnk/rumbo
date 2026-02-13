@@ -32,30 +32,22 @@ const {
   variant === "fullscreen" ? (
     <header class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden clip-slant-bottom -mt-20">
       <div class="absolute inset-0 z-0">
-        {video ? (
-          <>
-            <video
-              autoplay
-              muted
-              playsinline
-              loop
-              class="w-full h-full object-cover brightness-[0.7] contrast-125"
-              role="presentation"
-            >
-              <source src={video} type="video/mp4" />
-            </video>
-            <img
-              alt={imageAlt}
-              class="w-full h-full object-cover brightness-[0.7] contrast-125 absolute inset-0 -z-10"
-              src={image}
-            />
-          </>
-        ) : (
-          <img
-            alt={imageAlt}
-            class="w-full h-full object-cover brightness-[0.7] contrast-125"
-            src={image}
-          />
+        <img
+          alt={imageAlt}
+          class="w-full h-full object-cover brightness-[0.7] contrast-125"
+          src={image}
+        />
+        {video && (
+          <video
+            autoplay
+            muted
+            playsinline
+            loop
+            class="absolute inset-0 w-full h-full object-cover brightness-[0.7] contrast-125"
+            role="presentation"
+          >
+            <source src={video} type="video/mp4" />
+          </video>
         )}
       </div>
       <div class="absolute inset-0 z-10 bg-forest-dark/40 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30" />
