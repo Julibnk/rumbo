@@ -5,7 +5,6 @@ const navLinks = [
   { label: "Descenso del Sella", href: `${base}/descenso-del-sella` },
   { label: "Lagos de Covadonga", href: `${base}/visita-lagos` },
   { label: "Barranquismo", href: `${base}/barranquismo` },
-  { label: "Packs", href: `${base}/packs` },
 ];
 
 const groupLinks = [
@@ -34,15 +33,12 @@ const isAboutActive = aboutLinks.some((l) => isActive(l.href));
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
-      <a href={`${base}/`} class="flex items-center space-x-2 group">
-        <div
-          class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center transform -rotate-6 shadow-lg border-2 border-black group-hover:rotate-0 transition-transform"
-        >
-          <span class="material-icons text-black font-bold">terrain</span>
-        </div>
-        <span class="text-2xl font-bold tracking-tighter uppercase">
-          Rumbo<span class="text-primary">Norte</span>
-        </span>
+      <a href={`${base}/`} class="block">
+        <img
+          src={`${base}/branding/header-principal.png`}
+          alt="Rumbo Norte Asturias"
+          class="h-12 w-auto"
+        />
       </a>
 
       <!-- Desktop nav -->
