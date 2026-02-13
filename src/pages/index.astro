@@ -7,6 +7,8 @@ import sellaImg from "../assets/images/actividades/descenso-sella-hero.webp";
 import barranquismoImg from "../assets/images/actividades/barranquismo-3.webp";
 import lagosImg from "../assets/images/actividades/lagos-covadonga.jpg";
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const actividades = [
   {
     title: "Descenso del Sella",
@@ -17,7 +19,7 @@ const actividades = [
     duration: "4 - 4.5h",
     difficulty: "Baja",
     icon: "kayaking",
-    href: "/descenso-del-sella",
+    href: `${base}/descenso-del-sella`,
     image: sellaImg,
     alt: "Descenso del Sella en canoa",
     rotation: "-rotate-2",
@@ -32,7 +34,7 @@ const actividades = [
     duration: "~4h",
     difficulty: "Todos los niveles",
     icon: "terrain",
-    href: "/barranquismo",
+    href: `${base}/barranquismo`,
     image: barranquismoImg,
     alt: "Barranquismo en Asturias",
     rotation: "rotate-1",
@@ -47,7 +49,7 @@ const actividades = [
     duration: "~3.5h",
     difficulty: "Sin dificultad",
     icon: "landscape",
-    href: "/visita-lagos",
+    href: `${base}/visita-lagos`,
     image: lagosImg,
     alt: "Lagos de Covadonga en los Picos de Europa",
     rotation: "-rotate-1",
@@ -191,7 +193,7 @@ const actividades = [
           No puedes elegir solo una?
         </p>
         <a
-          href="/packs"
+          href={`${base}/packs`}
           class="inline-flex items-center gap-3 bg-forest-dark hover:bg-primary text-white hover:text-black font-bold text-base px-8 py-4 rounded-xl shadow-brutal hover:shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all border-2 border-black uppercase tracking-wider"
         >
           <span class="material-symbols-outlined">backpack</span>

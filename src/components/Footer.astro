@@ -1,22 +1,24 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const adventureLinks = [
-  { label: "Descenso del Sella", href: "/descenso-del-sella" },
-  { label: "Barranquismo", href: "/barranquismo" },
-  { label: "Lagos de Covadonga", href: "/visita-lagos" },
-  { label: "Packs", href: "/packs" },
-  { label: "Descenso en Grupo", href: "/descenso-en-grupo" },
+  { label: "Descenso del Sella", href: `${base}/descenso-del-sella` },
+  { label: "Barranquismo", href: `${base}/barranquismo` },
+  { label: "Lagos de Covadonga", href: `${base}/visita-lagos` },
+  { label: "Packs", href: `${base}/packs` },
+  { label: "Descenso en Grupo", href: `${base}/descenso-en-grupo` },
 ];
 
 const companyLinks = [
-  { label: "Novedades", href: "/novedades" },
-  { label: "Contacto", href: "/contacto" },
-  { label: "Iniciativa #RiosLimpios", href: "/iniciativa-rioslimpios" },
+  { label: "Novedades", href: `${base}/novedades` },
+  { label: "Contacto", href: `${base}/contacto` },
+  { label: "Iniciativa #RiosLimpios", href: `${base}/iniciativa-rioslimpios` },
 ];
 
 const legalLinks = [
-  { label: "Politica de Privacidad", href: "/politica-de-privacidad" },
-  { label: "Politica de Cookies", href: "/politica-de-cookies" },
-  { label: "Aviso Legal", href: "/aviso-legal" },
+  { label: "Politica de Privacidad", href: `${base}/politica-de-privacidad` },
+  { label: "Politica de Cookies", href: `${base}/politica-de-cookies` },
+  { label: "Aviso Legal", href: `${base}/aviso-legal` },
 ];
 
 const socialLinks = [
@@ -70,7 +72,7 @@ const badges = [
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
       <!-- Brand + contact -->
       <div class="md:col-span-4">
-        <a href="/" class="flex items-center space-x-2 mb-6">
+        <a href={`${base}/`} class="flex items-center space-x-2 mb-6">
           <div
             class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center transform -rotate-6"
           >

@@ -1,25 +1,28 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const navLinks = [
-  { label: "Descenso del Sella", href: "/descenso-del-sella" },
-  { label: "Lagos de Covadonga", href: "/visita-lagos" },
-  { label: "Barranquismo", href: "/barranquismo" },
-  { label: "Packs", href: "/packs" },
+  { label: "Descenso del Sella", href: `${base}/descenso-del-sella` },
+  { label: "Lagos de Covadonga", href: `${base}/visita-lagos` },
+  { label: "Barranquismo", href: `${base}/barranquismo` },
+  { label: "Packs", href: `${base}/packs` },
 ];
 
 const groupLinks = [
-  { label: "Descenso en Grupo", href: "/descenso-en-grupo" },
-  { label: "Viajes de Estudios", href: "/viajes-de-estudios" },
+  { label: "Descenso en Grupo", href: `${base}/descenso-en-grupo` },
+  { label: "Viajes de Estudios", href: `${base}/viajes-de-estudios` },
 ];
 
 const aboutLinks = [
-  { label: "Contacto", href: "/contacto" },
-  { label: "Novedades", href: "/novedades" },
+  { label: "Contacto", href: `${base}/contacto` },
+  { label: "Novedades", href: `${base}/novedades` },
 ];
 
 const bookingUrl = "https://www.reservaonline.support/rumbonorte/index.html";
 
-const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
-const isActive = (href: string) => currentPath === href;
+const normalize = (path: string) => path.replace(/\/$/, '') || '/';
+const currentPath = normalize(Astro.url.pathname);
+const isActive = (href: string) => currentPath === normalize(href);
 const isGroupActive = groupLinks.some((l) => isActive(l.href));
 const isAboutActive = aboutLinks.some((l) => isActive(l.href));
 ---
@@ -31,7 +34,7 @@ const isAboutActive = aboutLinks.some((l) => isActive(l.href));
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center space-x-2 group">
+      <a href={`${base}/`} class="flex items-center space-x-2 group">
         <div
           class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center transform -rotate-6 shadow-lg border-2 border-black group-hover:rotate-0 transition-transform"
         >
