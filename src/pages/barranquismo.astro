@@ -9,6 +9,15 @@ import ImageCarousel from "../components/ImageCarousel.astro";
 import Schedule from "../components/Schedule.astro";
 import FAQ from "../components/FAQ.astro";
 
+// Importar imágenes locales de alta calidad
+import barranquismo1 from "../assets/images/actividades/barranquismo-1.webp";
+import barranquismo2 from "../assets/images/actividades/barranquismo-2.webp";
+import barranquismo3 from "../assets/images/actividades/barranquismo-3.webp";
+import barranquismo4 from "../assets/images/actividades/barranquismo-4.webp";
+import barranquismo5 from "../assets/images/actividades/barranquismo-5.webp";
+import barranquismo6 from "../assets/images/actividades/barranquismo-6.webp";
+import barranquismo7 from "../assets/images/actividades/barranquismo-7.webp";
+
 const specs = [
   { icon: "schedule", label: "Duracion", value: "Aprox. 4 horas" },
   { icon: "signal_cellular_alt", label: "Niveles", value: "4 niveles de dificultad" },
@@ -46,63 +55,77 @@ const pricing = [
 
 const galleryImages = [
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuA_J2iy_sRCFXDohXu3MQRWvra8mXXQmCz4PcFCAA3jHJAjPEl2tgo9v9qPAZGzX0qwnOhhIH2xPpSwK0rJbgeJQcRF9D7qkXRaNvyfw09H3sF1F4XzXgr9B4HCd3z1ws2Fz2wJq4IILC9m3MRVqat6tBlBjdNAvQxbvclaZIdCMmPtUwKwLJyinFQS8ndgUFf-FeeO78ab7OiYITmcuWYlrOjC5rizGKie-eKao0gvgx69-r9GKBuXTz5oMM8n_FxMnut1ULC_xg",
-    alt: "Barranquismo en accion",
+    src: barranquismo1.src,
+    alt: "Barranquismo en accion - Descenso de cascadas",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAhNkCzdhqMxe__0v7LXIkR2_q_tId_TEJG-6JVYJPr3kbNQL7TxHiHS6eUWHv7J2po_m96Shs2HGloR9KdykXjCCiHg-OMn9-VaTdXVaeob-0_1bRzug8_IoRVg1UTnTTsulUGd4GDJVd6tmoSWbo10Vxej1mSlA1p3S4uLZuS4RSaehV6VEXHpb28TN8GMfCCWRQ9_JORgAaKP2_vrpceX3AiqgnMSD7Ff7NqGOsjx6NqBzpcb-0vsOrhqQt_9b79fLabGXAJeQ",
-    alt: "Salto de barranco",
+    src: barranquismo2.src,
+    alt: "Salto a poza en barranco asturiano",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAClcePJ7LUbyYwnh79wQpKJiSaM13yf79Tn7afyqo8f4X-n7p5hT1c0HmWbdoVts18Yw6VSEhY1N-0OdFGM8wiHvjjdXdDP4GVVCl5moycJFPUJ8zhfRzW5bN8p-99Szhv8ZNoedAibSYPowsLAhJ4Jp0f9WD-gPsqwYLeDQSXVhFU1-LVKyoZG9AjG6JInwtFLoS-q3Qvq-KOdC5ina6Me6Qf_CGk0eko-CGwyj5h2fj2GngMim1wwEn5KRRFinuHB3xUh7UpFg",
-    alt: "Equipamiento de barranquismo",
+    src: barranquismo3.src,
+    alt: "Grupo equipado para barranquismo",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuA_v6DENTQ1FTwT_nQnn9Mg4xu_eoyZt3-RSewYEFcJ3IR-S7RgajSc0X-p0SoGZktkRtgUqXVdg5Aefrraf8soxMATQd0W6Tsona_cAOVPVutx2Y8_U947RNavkCm2PI25eGy6GQmvNephlNuPvUZ3axMUfzEgCRaa0Fg5kfyVHWul_mpwj2PznmamTBzvHpQNsu6udqDiY8jS8w-7c_HTMFbpBjilzv7HaGYU6XAbxfopj0JHv14A33gHas90O2NE8XL-52drCw",
-    alt: "Vista del desfiladero",
+    src: barranquismo4.src,
+    alt: "Rappel en cascada vertical",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuA_J2iy_sRCFXDohXu3MQRWvra8mXXQmCz4PcFCAA3jHJAjPEl2tgo9v9qPAZGzX0qwnOhhIH2xPpSwK0rJbgeJQcRF9D7qkXRaNvyfw09H3sF1F4XzXgr9B4HCd3z1ws2Fz2wJq4IILC9m3MRVqat6tBlBjdNAvQxbvclaZIdCMmPtUwKwLJyinFQS8ndgUFf-FeeO78ab7OiYITmcuWYlrOjC5rizGKie-eKao0gvgx69-r9GKBuXTz5oMM8n_FxMnut1ULC_xg",
-    alt: "Barranquismo en accion",
+    src: barranquismo5.src,
+    alt: "Nadando por el barranco",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAhNkCzdhqMxe__0v7LXIkR2_q_tId_TEJG-6JVYJPr3kbNQL7TxHiHS6eUWHv7J2po_m96Shs2HGloR9KdykXjCCiHg-OMn9-VaTdXVaeob-0_1bRzug8_IoRVg1UTnTTsulUGd4GDJVd6tmoSWbo10Vxej1mSlA1p3S4uLZuS4RSaehV6VEXHpb28TN8GMfCCWRQ9_JORgAaKP2_vrpceX3AiqgnMSD7Ff7NqGOsjx6NqBzpcb-0vsOrhqQt_9b79fLabGXAJeQ",
-    alt: "Salto de barranco",
+    src: barranquismo6.src,
+    alt: "Vista del desfiladero desde dentro",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAClcePJ7LUbyYwnh79wQpKJiSaM13yf79Tn7afyqo8f4X-n7p5hT1c0HmWbdoVts18Yw6VSEhY1N-0OdFGM8wiHvjjdXdDP4GVVCl5moycJFPUJ8zhfRzW5bN8p-99Szhv8ZNoedAibSYPowsLAhJ4Jp0f9WD-gPsqwYLeDQSXVhFU1-LVKyoZG9AjG6JInwtFLoS-q3Qvq-KOdC5ina6Me6Qf_CGk0eko-CGwyj5h2fj2GngMim1wwEn5KRRFinuHB3xUh7UpFg",
-    alt: "Equipamiento de barranquismo",
-  },
-  {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuA_v6DENTQ1FTwT_nQnn9Mg4xu_eoyZt3-RSewYEFcJ3IR-S7RgajSc0X-p0SoGZktkRtgUqXVdg5Aefrraf8soxMATQd0W6Tsona_cAOVPVutx2Y8_U947RNavkCm2PI25eGy6GQmvNephlNuPvUZ3axMUfzEgCRaa0Fg5kfyVHWul_mpwj2PznmamTBzvHpQNsu6udqDiY8jS8w-7c_HTMFbpBjilzv7HaGYU6XAbxfopj0JHv14A33gHas90O2NE8XL-52drCw",
-    alt: "Vista del desfiladero",
+    src: barranquismo7.src,
+    alt: "Aventura en el barranco asturiano",
   },
 ];
 
 const carouselImages = [
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuA_J2iy_sRCFXDohXu3MQRWvra8mXXQmCz4PcFCAA3jHJAjPEl2tgo9v9qPAZGzX0qwnOhhIH2xPpSwK0rJbgeJQcRF9D7qkXRaNvyfw09H3sF1F4XzXgr9B4HCd3z1ws2Fz2wJq4IILC9m3MRVqat6tBlBjdNAvQxbvclaZIdCMmPtUwKwLJyinFQS8ndgUFf-FeeO78ab7OiYITmcuWYlrOjC5rizGKie-eKao0gvgx69-r9GKBuXTz5oMM8n_FxMnut1ULC_xg",
+    src: barranquismo1.src,
     alt: "Barranquismo en accion",
     location: "Arriondas, Asturias",
     caption: "Descendiendo los rapidos del barranco al amanecer.",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAhNkCzdhqMxe__0v7LXIkR2_q_tId_TEJG-6JVYJPr3kbNQL7TxHiHS6eUWHv7J2po_m96Shs2HGloR9KdykXjCCiHg-OMn9-VaTdXVaeob-0_1bRzug8_IoRVg1UTnTTsulUGd4GDJVd6tmoSWbo10Vxej1mSlA1p3S4uLZuS4RSaehV6VEXHpb28TN8GMfCCWRQ9_JORgAaKP2_vrpceX3AiqgnMSD7Ff7NqGOsjx6NqBzpcb-0vsOrhqQt_9b79fLabGXAJeQ",
+    src: barranquismo2.src,
     alt: "Salto de barranco",
     location: "Picos de Europa",
     caption: "Salto a poza cristalina entre paredes de roca.",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAClcePJ7LUbyYwnh79wQpKJiSaM13yf79Tn7afyqo8f4X-n7p5hT1c0HmWbdoVts18Yw6VSEhY1N-0OdFGM8wiHvjjdXdDP4GVVCl5moycJFPUJ8zhfRzW5bN8p-99Szhv8ZNoedAibSYPowsLAhJ4Jp0f9WD-gPsqwYLeDQSXVhFU1-LVKyoZG9AjG6JInwtFLoS-q3Qvq-KOdC5ina6Me6Qf_CGk0eko-CGwyj5h2fj2GngMim1wwEn5KRRFinuHB3xUh7UpFg",
+    src: barranquismo3.src,
     alt: "Equipamiento de barranquismo",
     location: "Arriondas, Asturias",
     caption: "Equipados y listos para la aventura.",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuA_v6DENTQ1FTwT_nQnn9Mg4xu_eoyZt3-RSewYEFcJ3IR-S7RgajSc0X-p0SoGZktkRtgUqXVdg5Aefrraf8soxMATQd0W6Tsona_cAOVPVutx2Y8_U947RNavkCm2PI25eGy6GQmvNephlNuPvUZ3axMUfzEgCRaa0Fg5kfyVHWul_mpwj2PznmamTBzvHpQNsu6udqDiY8jS8w-7c_HTMFbpBjilzv7HaGYU6XAbxfopj0JHv14A33gHas90O2NE8XL-52drCw",
+    src: barranquismo4.src,
     alt: "Vista del desfiladero",
     location: "Desfiladero de los Beyos",
     caption: "Vistas espectaculares desde el corazon del desfiladero.",
+  },
+  {
+    src: barranquismo5.src,
+    alt: "Nadando en el barranco",
+    location: "Picos de Europa",
+    caption: "Navegando por las aguas cristalinas del barranco.",
+  },
+  {
+    src: barranquismo6.src,
+    alt: "Explorando el desfiladero",
+    location: "Arriondas, Asturias",
+    caption: "Aventura entre paredes de roca milenaria.",
+  },
+  {
+    src: barranquismo7.src,
+    alt: "Descenso en grupo",
+    location: "Picos de Europa",
+    caption: "Disfrutando de la naturaleza salvaje en equipo.",
   },
 ];
 
