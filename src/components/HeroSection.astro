@@ -106,32 +106,40 @@ const {
       </div>
     </header>
   ) : (
-    <header class="relative min-h-[600px] lg:min-h-[70vh] -mt-20 overflow-hidden">
+    <header class="relative min-h-[500px] sm:min-h-[600px] lg:min-h-[70vh] -mt-20 overflow-hidden">
       {/* Background image - full coverage */}
       <div class="absolute inset-0 z-0">
         <img
           alt={imageAlt}
-          class="w-full h-full object-cover brightness-90"
+          class="w-full h-full object-cover"
           src={image}
         />
       </div>
 
-      {/* Diagonal overlay with text */}
-      <div class="absolute inset-0 z-10 pt-20">
+      {/* Mobile overlay - gradient from bottom */}
+      <div class="absolute inset-0 z-10 lg:hidden bg-gradient-to-t from-forest-dark/90 via-forest-dark/40 to-transparent" />
+
+      {/* Desktop diagonal overlay */}
+      <div
+        class:list={[
+          "hero-split-overlay absolute inset-0 z-10 hidden lg:block",
+          splitPosition === "right" ? "hero-split-right" : "hero-split-left"
+        ]}
+      />
+
+      {/* Content */}
+      <div class="absolute inset-0 z-20 pt-20">
         <div
           class:list={[
-            "bg-forest-dark/50 backdrop-blur-sm h-full flex items-center px-6 sm:px-12 lg:px-16 pb-16",
-            splitPosition === "right" && "justify-end"
+            "h-full flex items-end lg:items-center px-6 sm:px-12 lg:px-16 pb-10 sm:pb-16",
+            splitPosition === "right" && "lg:justify-end"
           ]}
-          style={splitPosition === "left"
-            ? "clip-path: polygon(0 0, 60% 0, 50% 100%, 0% 100%);"
-            : "clip-path: polygon(50% 0, 100% 0, 100% 100%, 40% 100%);"}
         >
           <div class:list={[
             "w-full max-w-xl",
-            splitPosition === "right" && "text-right"
+            splitPosition === "right" && "lg:text-right"
           ]}>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-none tracking-tight mb-6 uppercase drop-shadow-xl">
+            <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-none tracking-tight mb-4 sm:mb-6 uppercase drop-shadow-xl">
               <Fragment set:html={title} />
               {titleAccent && (
                 <>
@@ -155,14 +163,14 @@ const {
                 </>
               )}
             </h1>
-            <p class="text-lg sm:text-xl text-gray-200 leading-relaxed font-light drop-shadow-lg mb-6">
+            <p class="text-base sm:text-lg lg:text-xl text-gray-200 leading-relaxed font-light drop-shadow-lg mb-6">
               {subtitle}
             </p>
             <a
               href={ctaHref}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-block bg-primary hover:bg-white text-black font-bold text-lg px-8 py-4 rounded-xl shadow-brutal hover:shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all border-2 border-black uppercase tracking-wider"
+              class="inline-block bg-primary hover:bg-white text-black font-bold text-base sm:text-lg px-8 py-4 rounded-xl shadow-brutal hover:shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all border-2 border-black uppercase tracking-wider"
             >
               {ctaText}
             </a>
@@ -170,5 +178,16 @@ const {
         </div>
       </div>
     </header>
+
+    <style>
+      .hero-split-left {
+        clip-path: polygon(0 0, 60% 0, 50% 100%, 0% 100%);
+        background: linear-gradient(to right, rgba(34,81,51,0.85) 0%, rgba(34,81,51,0.6) 60%, rgba(34,81,51,0.25) 100%);
+      }
+      .hero-split-right {
+        clip-path: polygon(50% 0, 100% 0, 100% 100%, 40% 100%);
+        background: linear-gradient(to left, rgba(34,81,51,0.85) 0%, rgba(34,81,51,0.6) 60%, rgba(34,81,51,0.25) 100%);
+      }
+    </style>
   )
 }
