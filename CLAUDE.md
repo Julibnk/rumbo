@@ -41,9 +41,10 @@ El fichero contiene el scraping completo del sitio actual (WordPress + Elementor
 - **Estilos**: Tailwind CSS 4.1.18 (via @tailwindcss/vite plugin)
 - **TypeScript**: Modo strict
 - **Contenido**: Pendiente Content Collections con MDX para blog
-- **Interactividad**: Vanilla JS inline en componentes (carrusel, accordion, menu movil)
+- **Interactividad**: Vanilla JS inline en componentes (carrusel, accordion, menu movil, mapa)
+- **Mapas**: Leaflet 1.9.4 via CDN (unpkg.com), OpenStreetMap tiles
 - **Deploy**: Pendiente (Cloudflare Pages o Vercel)
-- **Imagenes**: WebP en `src/assets/images/`, optimizacion automatica de Astro
+- **Imagenes**: WebP en `src/assets/images/`, optimizacion automatica de Astro (solo en homepage y grupos via `<Image>`)
 
 ---
 
@@ -53,18 +54,20 @@ El fichero contiene el scraping completo del sitio actual (WordPress + Elementor
 src/
   layouts/
     Base.astro                # Layout comun: SEO meta, Google Fonts, Header + Footer + WhatsAppFAB
-  pages/                      # 4 paginas implementadas
-    index.astro               # PLACEHOLDER - solo hero con video, necesita reconstruccion completa
+  pages/                      # 6 paginas implementadas
+    index.astro               # Homepage: hero video + elige aventura + packs + #RiosLimpios + mapa Leaflet
     descenso-del-sella.astro  # COMPLETA - hero split, specs, rutas, pricing comparativo, pasos, carousel, FAQ
     barranquismo.astro        # COMPLETA - hero split, specs, pricing por niveles, carousel, coastering, FAQ
     visita-lagos.astro        # COMPLETA - hero split (right), specs, features, pricing simple, FAQ
+    grupos.astro              # COMPLETA - hero split, specs, viajes de estudios, tipos de grupo, pricing, FAQ
+    contacto.astro            # COMPLETA - hero split (right), datos contacto, formulario presupuesto, mapa Leaflet
   components/                 # 13 componentes
     Header.astro              # Navbar fija con blur, dropdowns, menu movil hamburguesa
     Footer.astro              # Badges confianza + info empresa + links + legal
     HeroSection.astro         # 2 variantes: fullscreen (home) y split diagonal (actividades)
     CTABanner.astro           # Banner dark full-width con CTA centrado
     TechSpecs.astro           # Card lateral con specs tecnicas (duracion, dificultad, precio...)
-    PricingTable.astro        # Tabla 3 columnas (nombre, detalles, precio) - barranquismo, lagos
+    PricingTable.astro        # Tabla 3 columnas (nombre, detalles, precio) - barranquismo, lagos, grupos
     PricingComparison.astro   # Tabla comparativa Individual vs Grupo - sella
     Schedule.astro            # Cards de turnos/horarios con badge de hora
     FAQ.astro                 # Accordion colapsable con animacion suave
@@ -84,6 +87,7 @@ src/
 public/
   favicon.ico
   favicon.svg
+  branding/                   # logo-rios-limpios.png (usado desde public/ en homepage)
 design/
   contenido.md               # FUENTE DE VERDAD del contenido textual (421 lineas)
   code.html                   # Referencia visual del diseno (HTML/CSS)
@@ -97,18 +101,16 @@ design/
 ## Estado de implementacion
 
 ### Paginas completadas
+- `/` (index) - Homepage con 5 secciones: hero fullscreen (video bg), "Elige tu aventura" (3 polaroid cards), "Combina y ahorra" (4 pack cards), #RiosLimpios (seccion dark con imagen rotada), "Encuentranos" (mapa Leaflet + datos contacto)
 - `/descenso-del-sella` - Completa con hero split, TechSpecs, 2 rutas (15km/7.5km), PricingComparison (Individual vs Grupo), proceso 4 pasos, ImageCarousel (5 imgs), "que incluye" (7 items), Schedule, FAQ, callout Pet Friendly
 - `/barranquismo` - Completa con hero split, TechSpecs, PricingTable (4 niveles + Coastering), ImageCarousel (7 imgs), seccion especial Coastering (dark theme con card rotada), Schedule, FAQ
 - `/visita-lagos` - Completa con hero split (right), TechSpecs, 4 feature cards, PricingTable (adultos/ninos), "que llevar" (4 items), Schedule
-
-### Paginas parciales
-- `/` (index) - Solo tiene hero con video de fondo. Necesita reconstruccion completa con 8 secciones (ver plan en `mejoras-ux.md`)
+- `/grupos` - Completa con hero split, TechSpecs, seccion Viajes de Estudios (Image + actividades + chips), tipos de grupo (2 cards: Cumpleanos, Empresas), PricingTable, "que incluye" (7 items), FAQ
+- `/contacto` - Completa con hero split (right), datos contacto (4 items), formulario de presupuesto (mailto fallback), mapa Leaflet full-width
 
 ### Paginas pendientes (segun plan en mejoras-ux.md)
-- `/packs` - Packs con calculo de ahorro visible
-- `/grupos` - Unifica "Descenso en Grupo" + "Viajes de Estudios" + Eventos
+- `/packs` - Packs con calculo de ahorro visible (actualmente inline en homepage)
 - `/nosotros` - Historia, equipo, valores, #RiosLimpios preview, badges
-- `/contacto` - Datos de contacto + formulario de presupuesto
 - `/novedades` - Blog (MDX content collection)
 - `/iniciativa-rioslimpios` - Iniciativa medioambiental
 - Paginas legales (privacidad, cookies, aviso legal)
@@ -125,12 +127,16 @@ design/
 
 ## Decisiones de diseno implementadas
 
-- **Reservas externas**: Booking via `https://www.reservaonline.support/rumbonorte/index.html` (URL hardcodeada en 5+ sitios)
+- **Reservas externas**: Booking via `https://www.reservaonline.support/rumbonorte/index.html` (URL hardcodeada en Header y paginas)
 - **Hero variantes**: `fullscreen` (home, video bg) y `split` (actividades, diagonal clip-path con splitPosition left/right)
 - **Datos inline**: Todos los datos (precios, specs, FAQ, horarios) estan hardcodeados en cada pagina. Plan pendiente de crear capa centralizada en `src/data/`
 - **WhatsApp como FAB principal**: Se usa WhatsAppFAB en lugar de BookingFAB. Mensaje pre-rellenado
 - **Iconos**: Material Icons + Material Symbols Outlined (Google Fonts CDN)
 - **Imagenes**: Importadas desde `src/assets/images/` para que Astro las optimice. Formatos WebP principalmente
+- **Astro `<Image>`**: Solo se usa en homepage (polaroid cards) y grupos (viajes de estudios). El resto usa `<img>` estandar
+- **Rutas internas**: Se usa `import.meta.env.BASE_URL.replace(/\/$/, '')` como `base` para construir hrefs entre paginas
+- **Mapa interactivo**: Leaflet 1.9.4 via CDN (unpkg.com) en homepage y contacto, con marcador custom primary y scroll zoom tras click
+- **Formulario contacto**: Usa mailto fallback (sin backend), construye email con datos del form
 - **Sin Content Collections**: Aun no se ha configurado `src/content/` para blog ni datos
 
 ---
@@ -229,36 +235,235 @@ Referencia visual en `design/code.html` y `design/screenshots/`.
 | `--color-forest-dark` | `#225133` | Fondos oscuros: footer, secciones dark, header pricing |
 | `--color-stone-gray` | `#e8ebe8` | Fondo de secciones alternas |
 
+### Ritmo de fondos entre secciones
+
+Las paginas alternan fondos para crear ritmo visual. Patron en paginas de actividad:
+
+| Orden | Fondo | Ejemplo |
+|-------|-------|---------|
+| Hero | Imagen + overlay forest-dark | Todas las paginas |
+| Seccion 1 | `bg-background-light` | Descripcion + TechSpecs |
+| Seccion 2 | `bg-white` | Rutas/Features/Cards |
+| CTA Banner | `bg-forest-dark` + stardust | Separador oscuro |
+| Pricing | `bg-white` | Tabla de precios |
+| Seccion N | `bg-background-light` | Carrusel, Incluye |
+| Schedule+FAQ | `bg-white` | Cierre |
+
+Homepage usa: `stone-gray` → `bg-white` → `bg-forest-dark` → `bg-primary` (unico, solo en homepage para "Encuentranos").
+
+### Textura stardust overlay
+
+Se usa una textura como overlay decorativo en secciones dark y destacadas:
+```html
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none"></div>
+```
+- Secciones `bg-forest-dark`: `opacity-10` (CTA Banner, Coastering, #RiosLimpios)
+- Secciones `bg-stone-gray`: `opacity-10` (Elige tu aventura)
+- Secciones `bg-primary`: `opacity-10` (Encuentranos)
+- Hero fullscreen: `opacity-30`
+
+**Nota**: URL externa, dependencia fragil. Considerar descargar como asset local.
+
 ### Tipografia
+
 - **Familia**: `Space Grotesk` (var `--font-display`), pesos 300-700
-- **Headlines**: Bold, uppercase, tracking-tight, tallas 6xl-9xl en hero
-- **Labels/nav**: Uppercase, `tracking-widest`, text-sm, font-bold
-- **Body**: font-light/medium, text-lg/xl, `leading-relaxed`
 - **Efecto especial**: `.text-stroke-sm` para palabras outline destacadas
 
+#### Jerarquia de encabezados
+
+**Titulos de seccion (h2):**
+- Paginas de actividad: `text-4xl font-bold uppercase` (con o sin `md:text-5xl`)
+- Homepage: `text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight`
+- Secciones dark: `text-4xl md:text-5xl font-bold text-white leading-tight uppercase`
+
+**Eyebrow labels (sobre titulos):**
+`text-primary font-bold tracking-widest uppercase text-sm block mb-4`
+
+**Subtitulos de seccion:**
+`text-lg md:text-xl text-gray-600 font-light mt-6 max-w-2xl mx-auto leading-relaxed`
+
+**Titulos de card (h3):**
+- Cards grandes: `text-2xl font-bold` (sin uppercase)
+- Polaroid cards: `text-lg md:text-xl font-bold uppercase tracking-tight`
+
+**Cita italica (usada en barranquismo, lagos, grupos):**
+`text-lg text-gray-600 italic border-l-4 border-primary pl-4 mt-6`
+
+**Texto en secciones dark:**
+- Cuerpo: `text-xl text-gray-300 font-light leading-relaxed`
+- Datos/precios: `text-primary font-bold text-2xl`
+- Unidad/contexto: `text-base text-gray-400 font-normal`
+
+**Gradient text (titulos con degradado):**
+`text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest-dark`
+
+#### Elemento decorativo SVG underline
+
+SVG curvo reutilizable debajo de palabras accent:
+```html
+<svg class="absolute w-full h-3 -bottom-1 left-0" fill="none" viewBox="0 0 200 9">
+  <path d="M2.00025 6.99999C18.4924 3.00001 77.5002 -3.49997 198 2.50001"
+        stroke="currentColor" stroke-linecap="round" stroke-width="3" />
+</svg>
+```
+- Hero (titleAccent): `text-white opacity-80`
+- Seccion "Elige tu aventura": `text-forest-dark opacity-60`
+
+#### Linea decorativa bajo titulos
+
+En componentes (PricingTable, PricingComparison, secciones inline):
+`<div class="w-20 h-1.5 bg-primary mt-4"></div>`
+
+### Sistema de espaciado
+
+**Padding de secciones:**
+- Secciones grandes: `py-24 md:py-32` (homepage) o `py-24` (paginas de actividad)
+- Secciones medias: `py-20` (CTA Banner, #RiosLimpios, Coastering)
+
+**Container estandar:**
+`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
+- Excepcion homepage "Encuentranos": `max-w-6xl`
+- Excepcion lagos Schedule: `max-w-3xl` centrado
+
+**Gaps en grids:**
+- `gap-16` → Grids principales (descripcion + TechSpecs, Schedule + FAQ)
+- `gap-12` → Contenido denso (Coastering, #RiosLimpios, viajes estudios)
+- `gap-8` → Cards medianas (rutas, features, polaroids)
+- `gap-6` → Cards pequenas (process steps, packs)
+- `gap-4` → Items compactos (incluye, que llevar)
+
+**Card padding:**
+- `p-8` → Cards grandes (rutas, TechSpecs, features, formulario)
+- `p-6` → Cards medias (packs, process, schedule)
+- `p-4` → Items pequenos (incluye, specs individuales, que llevar)
+- `p-3 md:p-4` → Polaroid cards
+
 ### Sombras y bordes
+
 - **Botones CTA**: `.shadow-brutal` (4px 4px negro) + `border-2 border-black`
 - **Cards**: `shadow-xl` / `shadow-2xl` + `border border-gray-200`
 - **FAB**: `.fab-shadow` (glow verde)
 - **Border radius**: `--radius: 0.5rem`, `--radius-lg: 1rem`, `--radius-xl: 1.5rem`
 
-### Elementos de diseno
-- **Secciones diagonales**: `.clip-slant-bottom` / `.clip-slant-top`
-- **Cards rotadas**: `-rotate-1` a `rotate-2` que se endereza al hover (efecto polaroid)
-- **Texturas de fondo**: Overlays stardust con `opacity-10/30`
-- **Gradient text**: `text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest-dark`
+### Variantes de botones CTA
 
-### Interacciones / Hover
-- Cards: `rotate(0deg) + scale(1.05)` al hover
-- Botones: `-translate-y-0.5` para efecto lift
-- Imagenes en cards: `scale-110` con `transition-transform duration-700`
-- Navbar: `backdrop-blur-md` con fondo semitransparente
-- Pricing rows: border-left primary + price scale al hover
-- TechSpecs items: lift + icon scale + color change
+**CTA principal (hero, secciones destacadas):**
+```
+bg-primary hover:bg-white text-black font-bold px-8 py-4 rounded-xl
+shadow-brutal hover:shadow-brutal-sm hover:translate-x-[2px] hover:translate-y-[2px]
+transition-all border-2 border-black uppercase tracking-wider
+```
+
+**CTA en CTABanner (grande, centrado):**
+```
+bg-primary hover:bg-white text-black font-black text-xl md:text-2xl
+px-12 py-6 rounded-2xl hover:scale-105 transition-all shadow-2xl
+uppercase tracking-tighter border-b-8 border-black/20
+```
+
+**CTA secundario (packs, formularios):**
+```
+bg-gray-900 hover:bg-primary text-white hover:text-black font-bold text-sm
+py-3 rounded-xl transition-all duration-300 uppercase tracking-wider
+```
+
+**CTA pack destacado (forest-dark):**
+```
+bg-forest-dark hover:bg-primary text-white hover:text-black font-bold text-sm
+py-3 rounded-xl transition-all duration-300 uppercase tracking-wider
+```
+
+**CTA en Header (desktop):**
+```
+bg-black text-white px-6 py-2 rounded-full font-bold uppercase text-sm
+hover:bg-primary hover:text-black hover:-translate-y-0.5 shadow-lg border-2 border-black
+```
+
+### Patron de imagen rotada (polaroid/stacked)
+
+Efecto de imagen con capa de fondo rotada, usado en Coastering, #RiosLimpios y carrusel:
+```html
+<div class="relative group">
+  <div class="absolute inset-0 bg-primary rounded-xl transform rotate-3 translate-x-2 translate-y-2
+              group-hover:rotate-6 transition-transform duration-300"></div>
+  <div class="relative rounded-xl overflow-hidden border-4 border-white shadow-2xl
+              transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
+    <img ... />
+  </div>
+</div>
+```
+
+### Variantes de icono en circulo
+
+**Grande (process steps, features):**
+```html
+<span class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center">
+  <span class="material-symbols-outlined text-primary text-3xl">icon_name</span>
+</span>
+```
+
+**Media (footer, contacto homepage):**
+```html
+<span class="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center">
+  <span class="material-symbols-outlined text-primary text-xl">icon_name</span>
+</span>
+```
+
+**Pequena (packs, incluye):**
+```html
+<span class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+  <span class="material-symbols-outlined text-primary text-base">icon_name</span>
+</span>
+```
+
+### Sistema de badges y labels
+
+**Badge rotado (hero, coastering):**
+`inline-block px-3 py-1 bg-primary text-black font-bold text-xs uppercase tracking-widest rounded-full border-2 border-black`
+En hero: anade `rotate-2 transform` y `px-4`
+
+**Badge flotante (pack destacado):**
+`absolute -top-3 left-1/2 -translate-x-1/2 bg-forest-dark text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider whitespace-nowrap`
+
+**Badge de precio (polaroid cards):**
+`absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-forest-dark font-bold text-sm px-3 py-1.5 rounded-full shadow-md`
+
+**Badge de ahorro (packs):**
+`text-primary text-xs font-bold`
+
+### Interacciones / Hover por componente
+
+- **Cards genericas**: `hover:-translate-y-1 hover:shadow-xl transition-all duration-300`
+- **Polaroid cards**: `hover:scale-[1.03] hover:-translate-y-2 hover:z-10` + rotation reset
+- **Cards con borde**: Default `border-2 border-gray-200`, hover `hover:border-primary/40`
+- **Botones**: `-translate-y-0.5` para efecto lift
+- **Imagenes en cards**: `scale-110` con `transition-transform duration-700`
+- **Navbar**: `backdrop-blur-md` con fondo semitransparente
+- **Pricing rows**: `hover:bg-primary/15 hover:border-l-4 hover:border-l-primary`, precio `group-hover:scale-110`
+- **Schedule cards**: `hover:border-l-8` (expande de 4 a 8), `hover:-translate-y-1 hover:shadow-xl`
+- **TechSpecs items**: `hover:bg-primary/10 hover:-translate-y-1 hover:shadow-md`, icon `group-hover:scale-110`, label `group-hover:text-primary`
+
+### Hero overlay patterns
+
+**Fullscreen (homepage):**
+- Imagen/video: `brightness-[0.7] contrast-125`
+- Overlay: `bg-forest-dark/40` + stardust `opacity-30`
+- Contenido centrado
+
+**Split (actividades):**
+- Mobile: `bg-gradient-to-t from-forest-dark/90 via-forest-dark/40 to-transparent`
+- Desktop left: `clip-path: polygon(0 0, 60% 0, 50% 100%, 0% 100%)` con gradiente 85%→60%→25%
+- Desktop right: `clip-path: polygon(50% 0, 100% 0, 100% 100%, 40% 100%)` con gradiente inverso
 
 ### Iconografia
+
 - **Material Icons + Material Symbols Outlined** (Google Fonts CDN)
-- Estilo: iconos dentro de circulos `bg-primary/20` con color `text-primary`
+- Estilo: iconos dentro de circulos con fondo primary y opacidad variable (ver variantes arriba)
+
+### Elementos de diseno adicionales
+
+- **Secciones diagonales**: `.clip-slant-bottom` / `.clip-slant-top`
+- **Chips/tags**: `inline-flex items-center gap-1.5 bg-background-light text-gray-700 px-4 py-2 rounded-full text-sm font-medium border border-gray-200` (usado en grupos)
 
 ---
 
@@ -271,15 +476,26 @@ Referencia visual en `design/code.html` y `design/screenshots/`.
 4. **Badges de confianza** en footer → Mover a seccion dedicada en homepage y /nosotros
 5. **Content Collections** no configuradas → Necesarias para blog
 
+### Dependencias externas fragiles
+- **Textura stardust**: `https://www.transparenttextures.com/patterns/stardust.png` → Descargar como asset local
+- **Hero homepage**: imagen de Google `lh3.googleusercontent.com` + video de WordPress `rumbonorteasturias.com`
+- **Coastering img**: imagen de Google `lh3.googleusercontent.com`
+- **Leaflet**: CDN `unpkg.com/leaflet@1.9.4` (CSS + JS) → Considerar instalar via npm
+- **Google Fonts**: CDN para Space Grotesk y Material Symbols → Considerar self-hosting
+
+### Inconsistencias detectadas
+- **Scroll animations**: Lagos tiene muchas menos animaciones que otras paginas (solo TechSpecs). Las feature cards y "que llevar" no usan `scroll-animate`
+- **Astro `<Image>` vs `<img>`**: Solo homepage polaroids y grupos viajes usan `<Image>` optimizado. El resto usa `<img>` sin optimizar
+- **Codigo Leaflet duplicado**: Mismo codigo de mapa copy-paste en homepage y contacto → Extraer componente `Map.astro`
+
 ### Funcionalidades pendientes
-- Homepage completa (8 secciones segun plan)
-- 6 paginas por construir (packs, grupos, nosotros, contacto, novedades, rioslimpios)
+- Homepage: faltan secciones de testimonios, CTA final (de las 8 planeadas en mejoras-ux.md)
+- 3 paginas por construir (packs, nosotros, novedades/blog) + pagina rioslimpios
 - Paginas legales
 - JSON-LD schema (LocalBusiness, TouristAttraction)
 - OpenGraph meta tags por pagina
 - Sitemap generation
 - Redirects 301 para URLs antiguas de WordPress
-- Formulario de contacto/presupuesto
 
 ### Componentes planificados pero no creados
 - `ActivityCard.astro` - Card de actividad para homepage/cross-sell
@@ -287,4 +503,4 @@ Referencia visual en `design/code.html` y `design/screenshots/`.
 - `Testimonials.astro` + `TestimonialCard.astro` - Reviews
 - `PackCard.astro` - Card de pack con ahorro calculado
 - `ProcessSteps.astro` - Proceso paso a paso (actualmente inline en sella)
-- `GroupTypeCard.astro` - Tipos de grupo
+- `Map.astro` - Mapa Leaflet reutilizable (actualmente duplicado en homepage + contacto)
