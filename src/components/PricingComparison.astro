@@ -28,7 +28,7 @@ const {
         <p class="text-gray-600 mt-4 text-lg">{subtitle}</p>
       )}
     </div>
-    <div class="overflow-x-auto">
+    <div class="scroll-animate overflow-x-auto" data-animation="fadeInUp">
       <table class="w-full text-left border-collapse">
         <thead>
           <tr class="bg-forest-dark text-white">
@@ -58,12 +58,12 @@ const {
             rows.map((row, i) => (
               <tr
                 class:list={[
-                  "border-b border-gray-200",
+                  "group cursor-default border-b border-gray-200 hover:bg-primary/15 hover:border-l-4 hover:border-l-primary transition-all duration-300",
                   i % 2 === 1 && "bg-primary/5",
                 ]}
               >
                 <td class="p-6">
-                  <div class="font-bold text-xl">{row.name}</div>
+                  <div class="font-bold text-xl group-hover:text-primary transition-colors duration-300">{row.name}</div>
                   {row.details && (
                     <div class="text-gray-500 italic text-sm mt-1">
                       {row.details}
@@ -71,10 +71,10 @@ const {
                   )}
                 </td>
                 <td class="p-6 text-right font-bold text-2xl text-primary">
-                  {row.individual}
+                  <span class="inline-block group-hover:scale-110 transition-transform duration-300">{row.individual}</span>
                 </td>
                 <td class="p-6 text-right font-bold text-2xl text-forest-dark">
-                  {row.grupo}
+                  <span class="inline-block group-hover:scale-110 transition-transform duration-300">{row.grupo}</span>
                 </td>
               </tr>
             ))

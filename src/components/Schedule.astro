@@ -17,13 +17,16 @@ const { title = "Horarios", shifts } = Astro.props;
   <h2 class="text-3xl font-bold mb-8 uppercase">{title}</h2>
   <div class="space-y-4">
     {
-      shifts.map((shift) => (
-        <div class="bg-white border-l-4 border-primary p-6 shadow-md flex justify-between items-center">
+      shifts.map((shift, i) => (
+        <div class="scroll-animate group bg-white border-l-4 border-primary p-6 shadow-md flex justify-between items-center hover:border-l-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-default"
+          data-animation="fadeInRight"
+          data-delay={i * 100}
+        >
           <div>
-            <h4 class="font-bold text-xl">{shift.name}</h4>
+            <h4 class="font-bold text-xl group-hover:text-primary transition-colors duration-300">{shift.name}</h4>
             <p class="text-gray-500">{shift.description}</p>
           </div>
-          <span class="bg-forest-dark text-white px-4 py-2 rounded-lg font-bold whitespace-nowrap">
+          <span class="bg-forest-dark text-white px-4 py-2 rounded-lg font-bold whitespace-nowrap group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
             {shift.time}
           </span>
         </div>

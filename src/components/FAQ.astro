@@ -19,7 +19,7 @@ const { title = "Preguntas frecuentes", items } = Astro.props;
       items.map((item) => (
         <div class="accordion-item border border-gray-200 rounded-xl overflow-hidden">
           <button
-            class="accordion-trigger w-full p-4 bg-white flex justify-between items-center cursor-pointer font-bold text-left"
+            class="accordion-trigger w-full p-4 bg-white flex justify-between items-center cursor-pointer font-bold text-left hover:bg-background-light transition-colors duration-200"
             type="button"
           >
             {item.question}

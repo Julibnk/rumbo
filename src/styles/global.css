@@ -62,12 +62,116 @@
   .accordion-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease-out,
+                padding 0.3s ease-out;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
+
   .accordion-item.open .accordion-content {
     max-height: 500px;
+    opacity: 1;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
+
+  .accordion-item {
+    transition: all 0.3s ease;
+  }
+
+  .accordion-item.open {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(140, 185, 80, 0.15);
+  }
+
   .accordion-item.open .accordion-icon {
     transform: rotate(180deg);
+  }
+
+  /* Accessibility: Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .accordion-content,
+    .accordion-item,
+    .accordion-icon {
+      transition: none;
+    }
+  }
+
+  /* === SCROLL ANIMATIONS === */
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .scroll-animate {
+    opacity: 0;
+  }
+
+  .scroll-animate.animate-in {
+    animation-duration: 0.6s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animate[data-animation="fadeInUp"].animate-in {
+    animation-name: fadeInUp;
+  }
+
+  .scroll-animate[data-animation="fadeInLeft"].animate-in {
+    animation-name: fadeInLeft;
+  }
+
+  .scroll-animate[data-animation="fadeInRight"].animate-in {
+    animation-name: fadeInRight;
+  }
+
+  /* Delays escalonados */
+  .scroll-animate[data-delay="100"].animate-in {
+    animation-delay: 0.1s;
+  }
+  .scroll-animate[data-delay="200"].animate-in {
+    animation-delay: 0.2s;
+  }
+  .scroll-animate[data-delay="300"].animate-in {
+    animation-delay: 0.3s;
+  }
+
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-animate {
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
 }
