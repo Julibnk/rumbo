@@ -1,0 +1,195 @@
+---
+import Base from "../layouts/Base.astro";
+import HeroSection from "../components/HeroSection.astro";
+import CTABanner from "../components/CTABanner.astro";
+
+import descensoSella2 from "../assets/images/actividades/descenso-sella-2.webp";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const valores = [
+  {
+    icon: "nature_people",
+    title: "Naturaleza",
+    description: "Vivimos y trabajamos en uno de los entornos naturales mas bonitos de Espana. Respetarlo es nuestra prioridad.",
+  },
+  {
+    icon: "groups",
+    title: "Cercanía",
+    description: "Somos un equipo pequeno que trata a cada cliente como un amigo. Nos importa que disfrutes de verdad.",
+  },
+  {
+    icon: "verified_user",
+    title: "Seguridad",
+    description: "Monitores titulados, equipamiento profesional y seguros completos. La diversion empieza con tranquilidad.",
+  },
+  {
+    icon: "pets",
+    title: "Pet Friendly",
+    description: "Tu perro tambien es bienvenido. Proporcionamos chalecos salvavidas para ellos.",
+  },
+];
+---
+
+<Base
+  title="Nosotros"
+  description="Conoce Rumbo Norte Asturias. Empresa de turismo activo en Arriondas, Picos de Europa. Descenso del Sella, barranquismo, lagos de Covadonga e iniciativa #RiosLimpios."
+>
+  <!-- Hero -->
+  <HeroSection
+    variant="split"
+    title="RUMBO NORTE"
+    titleAccent="ASTURIAS"
+    subtitle="Turismo activo en el corazon de los Picos de Europa desde Arriondas."
+    image={descensoSella2.src}
+    imageAlt="Equipo de Rumbo Norte Asturias preparando canoas en el Sella"
+    ctaText="Contacta"
+    ctaHref={`${base}/contacto`}
+  />
+
+  <!-- Quienes somos -->
+  <section class="py-24 bg-background-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <span class="text-primary font-bold tracking-widest uppercase text-sm">
+          Quienes somos
+        </span>
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight mt-3">
+          TU AVENTURA <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest-dark">
+            EMPIEZA AQUI
+          </span>
+        </h2>
+        <p class="text-xl text-gray-600 font-light leading-relaxed mt-6">
+          Rumbo Norte Asturias es una empresa de turismo activo en Arriondas, la puerta de entrada a los Picos de Europa. Organizamos descensos del Sella en canoa, barranquismo, visitas guiadas a los Lagos de Covadonga y mucho mas.
+        </p>
+        <p class="text-lg text-gray-600 font-light leading-relaxed mt-4">
+          Nuestro objetivo es que cada persona que venga a vernos se lleve una experiencia inolvidable: segura, divertida y en contacto directo con la naturaleza asturiana.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valores -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-12">
+        <h2 class="text-4xl font-bold uppercase">Lo que nos mueve</h2>
+        <div class="w-20 h-1.5 bg-primary mt-4"></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {valores.map((v, i) => (
+          <div
+            class="bg-background-light p-6 rounded-2xl border border-gray-200 scroll-animate"
+            data-animation="fadeInUp"
+            data-delay={`${(i + 1) * 100}`}
+          >
+            <div class="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center mb-4">
+              <span class="material-icons text-gray-600">{v.icon}</span>
+            </div>
+            <h3 class="text-lg font-bold mb-2">{v.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{v.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Badges de confianza -->
+  <section class="py-16 bg-stone-gray">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="flex flex-col items-center text-center gap-3 scroll-animate" data-animation="fadeInUp" data-delay="100">
+          <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+            <span class="material-icons text-gray-600">accessible</span>
+          </div>
+          <span class="text-sm font-bold uppercase tracking-wide text-gray-700">Instalaciones accesibles</span>
+        </div>
+        <div class="flex flex-col items-center text-center gap-3 scroll-animate" data-animation="fadeInUp" data-delay="200">
+          <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+            <span class="material-icons text-gray-600">pets</span>
+          </div>
+          <span class="text-sm font-bold uppercase tracking-wide text-gray-700">Pet Friendly</span>
+        </div>
+        <div class="flex flex-col items-center text-center gap-3 scroll-animate" data-animation="fadeInUp" data-delay="300">
+          <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+            <span class="material-icons text-gray-600">verified_user</span>
+          </div>
+          <span class="text-sm font-bold uppercase tracking-wide text-gray-700">Seguros R.C. y accidentes</span>
+        </div>
+        <div class="flex flex-col items-center text-center gap-3 scroll-animate" data-animation="fadeInUp" data-delay="300">
+          <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+            <span class="material-icons text-gray-600">energy_savings_leaf</span>
+          </div>
+          <span class="text-sm font-bold uppercase tracking-wide text-gray-700">Energias renovables</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTABanner
+    title="LISTO PARA LA AVENTURA?"
+    ctaText="Reserva ya!"
+  />
+
+  <!-- #RiosLimpios -->
+  <section id="rioslimpios" class="py-24 bg-white scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Logo -->
+        <div class="relative scroll-animate" data-animation="fadeInLeft">
+          <div class="rounded-2xl overflow-hidden bg-forest-dark flex items-center justify-center aspect-square max-w-[450px] mx-auto p-16">
+            <img
+              src={`${base}/branding/logo-rios-limpios.png`}
+              alt="Rumba Sella - Iniciativa #rioslimpios"
+              class="w-full brightness-0 invert"
+            />
+          </div>
+        </div>
+
+        <!-- Contenido -->
+        <div class="space-y-6 scroll-animate" data-animation="fadeInRight">
+          <span class="text-primary font-bold tracking-widest uppercase text-sm">
+            Iniciativa medioambiental
+          </span>
+          <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+            #RIOS <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest-dark">
+              LIMPIOS
+            </span>
+          </h2>
+          <p class="text-xl text-gray-600 font-light leading-relaxed">
+            Con la Rumba Sella te dejamos una canoa gratis para 2 personas a cambio de recoger basura del rio. Te proporcionamos todo el equipamiento y bolsas.
+          </p>
+          <p class="text-gray-600 font-light leading-relaxed">
+            Al volver pesamos lo recogido, te hacemos una foto y la subimos a nuestro Instagram. Porque disfrutar del rio y cuidarlo van de la mano.
+          </p>
+
+          <div class="flex items-baseline gap-3 pt-2">
+            <span class="text-4xl font-bold text-gray-900">300 kg</span>
+            <span class="text-gray-500">retirados del Sella en 2023</span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a
+              href="tel:+34648951599"
+              class="inline-block bg-gray-900 hover:bg-primary text-white hover:text-black font-bold px-8 py-4 rounded-xl border-2 border-gray-900 hover:border-black uppercase tracking-widest transition-all hover:-translate-y-0.5"
+            >
+              Quiero participar
+            </a>
+            <a
+              href="https://www.instagram.com/rumbonorteasturias/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors text-sm font-medium"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @rumbonorteasturias
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
