@@ -4,7 +4,6 @@ import HeroSection from "../components/HeroSection.astro";
 import TechSpecs from "../components/TechSpecs.astro";
 import CTABanner from "../components/CTABanner.astro";
 import PricingTable from "../components/PricingTable.astro";
-import ImageGallery from "../components/ImageGallery.astro";
 import ImageCarousel from "../components/ImageCarousel.astro";
 import Schedule from "../components/Schedule.astro";
 import FAQ from "../components/FAQ.astro";
@@ -50,37 +49,6 @@ const pricing = [
     name: "Coastering",
     details: "El mar desde otra perspectiva.",
     price: "45€ / persona",
-  },
-];
-
-const galleryImages = [
-  {
-    src: barranquismo1.src,
-    alt: "Barranquismo en accion - Descenso de cascadas",
-  },
-  {
-    src: barranquismo2.src,
-    alt: "Salto a poza en barranco asturiano",
-  },
-  {
-    src: barranquismo3.src,
-    alt: "Grupo equipado para barranquismo",
-  },
-  {
-    src: barranquismo4.src,
-    alt: "Rappel en cascada vertical",
-  },
-  {
-    src: barranquismo5.src,
-    alt: "Nadando por el barranco",
-  },
-  {
-    src: barranquismo6.src,
-    alt: "Vista del desfiladero desde dentro",
-  },
-  {
-    src: barranquismo7.src,
-    alt: "Aventura en el barranco asturiano",
   },
 ];
 
@@ -222,13 +190,6 @@ const faqItems = [
 
   <!-- Pricing -->
   <PricingTable title="Tarifas y niveles" rows={pricing} />
-
-  <!-- Gallery -->
-  <ImageGallery
-    title="Galeria de accion"
-    subtitle="Capturado en el corazon del barranco."
-    images={galleryImages}
-  />
 
   <!-- Carousel Gallery -->
   <ImageCarousel

@@ -6,7 +6,6 @@ import CTABanner from "../components/CTABanner.astro";
 import PricingComparison from "../components/PricingComparison.astro";
 import Schedule from "../components/Schedule.astro";
 import FAQ from "../components/FAQ.astro";
-import ImageGallery from "../components/ImageGallery.astro";
 import ImageCarousel from "../components/ImageCarousel.astro";
 
 // Importar imágenes locales de alta calidad
@@ -78,29 +77,6 @@ const faqItems = [
     question: "Que incluye la actividad?",
     answer:
       "Todo el material necesario, contenedor estanco, taquillas individuales (segun disponibilidad), traje de neopreno gratuito (bajo peticion), acceso ilimitado a vestuarios y duchas, transporte de vuelta, y seguro de RC y accidentes.",
-  },
-];
-
-const galleryImages = [
-  {
-    src: descensoSellaHero.src,
-    alt: "Descenso del Sella en canoa - Vista panoramica",
-  },
-  {
-    src: descensoSella1.src,
-    alt: "Canoas navegando por el rio Sella",
-  },
-  {
-    src: descensoSella2.src,
-    alt: "Grupo disfrutando del descenso del Sella",
-  },
-  {
-    src: descensoSella3.src,
-    alt: "Paisajes del rio Sella con los Picos de Europa",
-  },
-  {
-    src: descensoSella4.src,
-    alt: "Aventura en canoa por el Sella",
   },
 ];
 
@@ -280,13 +256,6 @@ const carouselImages = [
       </div>
     </div>
   </section>
-
-  <!-- Gallery -->
-  <ImageGallery
-    title="Galeria del Sella"
-    subtitle="Momentos capturados en el rio mas famoso de Asturias."
-    images={galleryImages}
-  />
 
   <!-- Carousel Gallery -->
   <ImageCarousel
