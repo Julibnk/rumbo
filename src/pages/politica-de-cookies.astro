@@ -1,0 +1,184 @@
+---
+import Base from "../layouts/Base.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Base
+  title="Politica de Cookies"
+  description="Politica de cookies de Rumbo Norte Asturias. Informacion sobre el uso de cookies en nuestra web."
+  hideBadges
+>
+  <!-- Cabecera -->
+  <section class="py-16 md:py-20 bg-background-light border-b border-gray-200">
+    <div class="max-w-3xl mx-auto px-4">
+      <span class="text-primary font-bold tracking-widest uppercase text-sm">Legal</span>
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight mt-3 uppercase">
+        Politica de <br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-forest-dark">
+          Cookies
+        </span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Contenido -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-4 prose-legal">
+
+      <h2>Que son las cookies?</h2>
+      <p>Las cookies son pequenos archivos de texto que se almacenan en el disco duro o la memoria temporal del ordenador del usuario cuando este accede a las paginas de un sitio web. Su finalidad es agilizar el acceso a los servicios y contenidos ofrecidos, identificando principalmente con la maxima celeridad a cada usuario y sus preferencias de acceso, navegacion y/o visualizacion del sitio web.</p>
+      <p>Las cookies se asocian unicamente con un usuario anonimo y su ordenador, no proporcionando el nombre y apellidos del mismo excepto en el caso de que el usuario haya procedido a personalizar su programa navegador o a crear una cuenta de usuario con informacion que permita identificarlo.</p>
+
+      <h2>Como utilizamos las cookies</h2>
+      <p>En esta web utilizamos cookies propias y de terceros. Las cookies propias son necesarias para el funcionamiento basico del sitio y no recogen datos de identificacion personal. Las cookies de terceros nos ayudan a entender como se utiliza el sitio, mantener la seguridad y mejorar la experiencia del usuario.</p>
+
+      <h2>Tipos de cookies en este sitio</h2>
+
+      <h3>Cookies tecnicas (necesarias)</h3>
+      <p>Son imprescindibles para el funcionamiento basico del sitio web. No requieren consentimiento.</p>
+      <div class="cookie-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Cookie</th>
+              <th>Finalidad</th>
+              <th>Duracion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>cookie_consent</td>
+              <td>Almacena la preferencia del usuario sobre cookies</td>
+              <td>1 ano</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Cookies analiticas</h3>
+      <p>Nos ayudan a entender como los visitantes interactuan con la web, recopilando informacion de forma anonima.</p>
+      <div class="cookie-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Cookie</th>
+              <th>Proveedor</th>
+              <th>Finalidad</th>
+              <th>Duracion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>_ga</td>
+              <td>Google Analytics</td>
+              <td>Distinguir usuarios unicos</td>
+              <td>2 anos</td>
+            </tr>
+            <tr>
+              <td>_ga_*</td>
+              <td>Google Analytics</td>
+              <td>Mantener el estado de la sesion</td>
+              <td>2 anos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Cookies de terceros</h3>
+      <p>Algunos servicios integrados en nuestra web pueden establecer sus propias cookies:</p>
+      <ul>
+        <li><strong>OpenStreetMap / Leaflet:</strong> el mapa interactivo de nuestra pagina de contacto puede almacenar cookies para su funcionamiento.</li>
+        <li><strong>Google Fonts:</strong> para la carga de tipografias utilizadas en el diseno del sitio.</li>
+        <li><strong>Sistema de reservas:</strong> al acceder a la plataforma de reservas externa (reservaonline.support), esta puede establecer sus propias cookies sujetas a su propia politica.</li>
+      </ul>
+
+      <h2>Como gestionar las cookies</h2>
+      <p>Aunque la mayoria de los navegadores aceptan automaticamente cookies, si el usuario no desea que se instale en su disco duro una cookie, tiene la posibilidad de configurar su navegador para ser avisado en su pantalla de la recepcion de cookies y para impedir la instalacion de estas en su disco duro.</p>
+      <p>A continuacion le indicamos como hacerlo en los navegadores mas comunes:</p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+        <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari</a></li>
+        <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+        <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+      </ul>
+      <p>Ten en cuenta que si desactivas las cookies, algunas funcionalidades de la web podrian no estar disponibles.</p>
+
+      <h2>Base legal</h2>
+      <p>Las cookies tecnicas se instalan en base a nuestro interes legitimo para el correcto funcionamiento del sitio web. Las cookies analiticas y de terceros se instalan unicamente con tu consentimiento previo, que puedes retirar en cualquier momento.</p>
+      <p>En caso de que las cookies depositadas en el ordenador del usuario pudieran identificar al usuario, la Web no tiene intencion alguna de proceder a la recogida y tratamiento de los datos de caracter personal contenidos en las citadas cookies.</p>
+
+      <h2>Mas informacion</h2>
+      <p>Si tienes cualquier duda sobre nuestra politica de cookies, puedes contactarnos en <a href="mailto:info@rumbonorteasturias.com">info@rumbonorteasturias.com</a>.</p>
+      <p>Tambien puedes consultar nuestra <a href={`${base}/politica-de-privacidad`}>Politica de Privacidad</a> para mas informacion sobre el tratamiento de tus datos personales.</p>
+
+    </div>
+  </section>
+</Base>
+
+<style>
+  .prose-legal {
+    line-height: 1.8;
+    color: #374151;
+  }
+  .prose-legal h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .prose-legal h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #374151;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-legal p {
+    margin-bottom: 1rem;
+  }
+  .prose-legal ul {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+  }
+  .prose-legal li {
+    margin-bottom: 0.5rem;
+  }
+  .prose-legal a {
+    color: #225133;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose-legal a:hover {
+    color: #8cb950;
+  }
+  .prose-legal strong {
+    color: #111827;
+  }
+  .cookie-table {
+    margin: 1rem 0 1.5rem;
+    overflow-x: auto;
+  }
+  .cookie-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  .cookie-table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background: #f6f8f6;
+    font-weight: 700;
+    color: #111827;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  .cookie-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f3f4f6;
+  }
+</style>

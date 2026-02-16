@@ -1,7 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
 import HeroSection from "../components/HeroSection.astro";
-import CTABanner from "../components/CTABanner.astro";
 import { Image } from "astro:assets";
 
 import descensoSella2 from "../assets/images/actividades/descenso-sella-2.webp";
@@ -96,44 +95,6 @@ const valores = [
       </div>
     </div>
   </section>
-
-  <!-- Badges de confianza -->
-  <section class="py-16 bg-stone-gray">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div class="flex flex-col items-center text-center gap-3 scroll-animate" data-animation="fadeInUp" data-delay="100">
-          <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
-            <span class="material-icons text-gray-600">accessible</span>
-          </div>
-          <span class="text-sm font-bold uppercase tracking-wide text-gray-700">Instalaciones accesibles</span>
-        </div>
-        <div class="flex flex-col items-center text-center gap-3 scroll-animate" data-animation="fadeInUp" data-delay="200">
-          <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
-            <span class="material-icons text-gray-600">pets</span>
-          </div>
-          <span class="text-sm font-bold uppercase tracking-wide text-gray-700">Pet Friendly</span>
-        </div>
-        <div class="flex flex-col items-center text-center gap-3 scroll-animate" data-animation="fadeInUp" data-delay="300">
-          <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
-            <span class="material-icons text-gray-600">verified_user</span>
-          </div>
-          <span class="text-sm font-bold uppercase tracking-wide text-gray-700">Seguros R.C. y accidentes</span>
-        </div>
-        <div class="flex flex-col items-center text-center gap-3 scroll-animate" data-animation="fadeInUp" data-delay="300">
-          <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
-            <span class="material-icons text-gray-600">energy_savings_leaf</span>
-          </div>
-          <span class="text-sm font-bold uppercase tracking-wide text-gray-700">Energias renovables</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <CTABanner
-    title="LISTO PARA LA AVENTURA?"
-    ctaText="Reserva ya!"
-  />
 
   <!-- #RiosLimpios -->
   <section id="rioslimpios" class="py-24 bg-white scroll-mt-24">

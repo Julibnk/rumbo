@@ -7,11 +7,13 @@ import WhatsAppFAB from "../components/WhatsAppFAB.astro";
 interface Props {
   title: string;
   description?: string;
+  hideBadges?: boolean;
 }
 
 const {
   title,
   description = "Empresa de turismo activo en Asturias. Descenso del Sella en canoa, barranquismo, visita guiada a los Lagos de Covadonga y packs de aventura.",
+  hideBadges = false,
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -49,7 +51,7 @@ const fullTitle = title === "Inicio"
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer hideBadges={hideBadges} />
     <WhatsAppFAB />
 
     <!-- Scroll animations script -->
